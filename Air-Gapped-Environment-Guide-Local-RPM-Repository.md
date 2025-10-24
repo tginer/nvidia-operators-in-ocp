@@ -1,16 +1,19 @@
-# How to build the Mellanox OFED (MOFED) driver in an air-gapped environment with a local RPM package server
+# Building the Mellanox OFED (MOFED) Driver in an Air-Gapped Environment with a Local RPM Package Server
 
-This content is based in the official NVIDIA Network Operator docs regarding the air gapped environment configuration.[NVIDIA Network Operator Deployment in an Air-gapped Environment](https://docs.nvidia.com/networking/display/kubernetes2570/advanced/proxy-airgapped.html#local-package-repository)
+This content is based on the official NVIDIA Network Operator documentation regarding air-gapped environment configuration. For reference, see [NVIDIA Network Operator Deployment in an Air-gapped Environment](https://docs.nvidia.com/networking/display/kubernetes2570/advanced/proxy-airgapped.html#local-package-repository).
 
 ## Introduction
 
-There are currently two different solutions to deploy the Mellanox OFED (MOFED) driver without Internet connectivity: precompile the driver for the right kernel version and architecture in an online environment and push the container image to the offline registry; or make all the necessary rpm packages available at the air gapped environment. 
+There are currently two solutions available for deploying the Mellanox OFED (MOFED) driver without Internet connectivity:
 
-This guide explains all the required steps to mirror and expose all the source rpm packages in the air gapped environment in order for the MOFED pod to build the driver itself, with the openshift-driver-toolkit-ctr container.
+1. Precompile the driver for the correct kernel version and architecture in an online environment, then push the container image to the offline registry
+2. Make all necessary RPM packages available within the air-gapped environment
 
-## Create a systemd service running an HTTP server
+This guide provides step-by-step instructions for mirroring and exposing all required source RPM packages in the air-gapped environment, enabling the MOFED pod to build the driver itself using the openshift-driver-toolkit-ctr container.
 
-Choose a local path where all the rpm binaries will be mirrored so that the HTTP server exposes it. In this example, the */home/user/rpmserver/data/*
+## Create a systemd Service Running an HTTP Server
+
+Choose a local path where all RPM binaries will be mirrored and exposed by the HTTP server. In this example, we use `/home/user/rpmserver/data/`
 
 
 
@@ -46,7 +49,7 @@ NotifyAccess=all
 WantedBy=default.target
 ```
 
-Start the service, check the container is up and running and test it:
+Start the service, verify that the container is up and running, and test it:
 
 
 ```bash
@@ -64,8 +67,9 @@ curl -X GET  http://infra.server.lab:5443/tbd
 TBD
 ```
 
-## Mirror the required rpm packages to the air-gapped environment
-From the [rhocp-4.18-for-rhel-9-aarch64-rpms repository(https://access.redhat.com/downloads/content/kernel-core/5.14.0-427.87.1.el9_4/aarch64/fd431d51/package)], download the following list of packages:
+## Mirror the Required RPM Packages to the Air-Gapped Environment
+
+From the [rhocp-4.18-for-rhel-9-aarch64-rpms repository](https://access.redhat.com/downloads/content/kernel-core/5.14.0-427.87.1.el9_4/aarch64/fd431d51/package), download the following packages:
 
 -   kernel-headers-${KERNEL_VERSION}
 -   kernel-devel-${KERNEL_VERSION}
@@ -79,7 +83,7 @@ From the [rhocp-4.18-for-rhel-9-aarch64-rpms repository(https://access.redhat.co
 -   patch
 -   hostname
 
-Download the cuda repository for rhel9 aarch64:
+Download the CUDA repository for RHEL9 aarch64:
 
 ```bash
 mkdir -p /home/user/rpmserver/data/cuda
@@ -88,7 +92,7 @@ cd /home/user/rpmserver/data/cuda
 wget -r -np -nH --cut-dirs=5 -R "index.html*" https://developer.download.nvidia.com/compute/cuda/repos/rhel9/aarch64/
 ```
 
-Download the ubi8 and ubi9 rpms with:
+Download the UBI8 and UBI9 RPMs with:
 ```bash
 mkdir -p /home/user/rpmserver/data/ubi8/baseos
 cd /home/user/rpmserver/data/ubi8/baseos
@@ -116,7 +120,7 @@ wget -r -np -nH --cut-dirs=7 -R "index.html*" \
 https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi9/9/aarch64/appstream/os/ 
 ```
 
-Create each repo metadata file with:
+Create the repository metadata files for each repository:
 ```bash
 createrepo_c /home/user/rpmserver/data/ubi8
 createrepo_c /home/user/rpmserver/data/ubi9
@@ -124,10 +128,11 @@ createrepo_c /home/user/rpmserver/data/cuda-rhel9-aarch64
 createrepo_c /home/user/rpmserver/data/rhocp-4.18-for-rhel-9-aarch64-rpms 
 ```
 
-## Create a Kubernetes ConfigMap to configure the Network Operator to use the air-gapped rpm server
+## Create a Kubernetes ConfigMap to Configure the Network Operator
 
-Prepare three local files that will be used in the ConfigMap:
-ubi.repo
+Prepare three local repository configuration files that will be used in the ConfigMap:
+
+**ubi.repo**
 ```bash
 [ubi-8-baseos]
 name = baseos 
@@ -151,7 +156,7 @@ enabled = 1
 gpgcheck = 0 
 ```
 
-cuda.repo
+**cuda.repo**
 ```bash
 [cuda]
 name=cuda-rhel9-aarch64
@@ -160,7 +165,7 @@ gpgcheck=1
 gpgkey=http://infra.server.lab:5443/cuda-rhel9-aarch64/D42D0685.pub
 enabled=1 
 ```
-redhat.repo
+**redhat.repo**
 ```bash
 [rhocp-4.18-for-rhel-9-aarch64-rpms]
 name=rhocp-4.18-for-rhel-9-aarch64-rpms
@@ -169,38 +174,40 @@ gpgcheck=0
 enabled=1 
 ```
 
-Create the ConfigMap in the nvidia-network-operator with the command:
+Create the ConfigMap in the `nvidia-network-operator` namespace using the following command:
 ```bash
 oc create configmap repo-config -n nvidia-network-operator  --from-file=cuda.repo --from-file=redhat.repo --from-file=ubi.repo 
 ```
 
 
-## Mirror the right DOCA driver version according to your RHCOS version and architecture
-Navigate to the [NVIDIA doca driver catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/mellanox/containers/doca-driver/tags?version=doca3.1.0-25.07-0.9.7.0-0-rhcos4.18-arm64) and search for your specific rhcos version and architecture. 
+## Mirror the Correct DOCA Driver Version for Your RHCOS Version and Architecture
 
-In this scenario, rhcos 4.18 and arm64 were used.
+Navigate to the [NVIDIA DOCA driver catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/mellanox/containers/doca-driver/tags?version=doca3.1.0-25.07-0.9.7.0-0-rhcos4.18-arm64) and search for your specific RHCOS version and architecture. 
+
+In this example, RHCOS 4.18 and ARM64 are used.
 
 ```bash
 podman pull nvcr.io/nvidia/mellanox/doca-driver:doca3.1.0-25.07-0.9.7.0-0-rhcos4.18-arm64
 ```
 
-There are many ways to copy the driver image to the air-gapped container registry, such as using skopeo, oc-mirror etc. In this example we'll simply use podman tools.
+There are several methods for copying the driver image to the air-gapped container registry, such as using `skopeo`, `oc-mirror`, etc. In this example, we'll use Podman tools.
 
-**Note**: the container image must be tag with the following data "\<driver-version>-\<rhcos-version>-\<architecture>", in this example: *25.07-0.9.7.0-rhcos4.18-arm64*
+**Note**: The container image must be tagged with the following format: `<driver-version>-<rhcos-version>-<architecture>`. In this example: `25.07-0.9.7.0-rhcos4.18-arm64`
 ```bash
 podman tag nvcr.io/nvidia/mellanox/doca-driver:doca3.1.0-25.07-0.9.7.0-0-rhcos4.18-arm64 nvcr.io/nvidia/mellanox/doca-driver:doca3.1.0-25.07-0.9.7.0-0-rhcos4.18-arm64 registry-arm.server.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64
 
 podman push registry-arm.server.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64
 ```
 
-## Configure the NicClusterPolicy CR to use the air gap rpm packages
-The NIC Cluster Policy requires the ConfigMap to be injected so that the local air-gapped HTTP server is used to pull the rpm binaries; as well as the repository,version,and image must point to the air-gapped container registry.
+## Configure the NicClusterPolicy CR to Use the Air-Gapped RPM Packages
 
-Fill in the following data:
-- repoConfig: ConfigMap name
-- image: driver container image name
-- repository: air-gapped container registry
-- version: driver version
+The NIC Cluster Policy requires the ConfigMap to be injected so that the local air-gapped HTTP server is used to pull the RPM binaries. Additionally, the repository, version, and image must point to the air-gapped container registry.
+
+Configure the following parameters:
+- **repoConfig**: ConfigMap name
+- **image**: Driver container image name
+- **repository**: Air-gapped container registry URL
+- **version**: Driver version
 
 ```bash
 apiVersion: mellanox.com/v1alpha1
@@ -234,12 +241,12 @@ spec:
 ```
 ## Results
 
-Instead of the precompiled driver path, where the MOFED pod only spinned up a single container running the already compiled DOCA driver; in this secenario the MOFED pod spins up a openshift-driver-toolkit-ctr container that compiles the raw mirrored driver at registry-arm.server.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64 
+Instead of using the precompiled driver approach (where the MOFED pod only spins up a single container running the already-compiled DOCA driver), in this scenario the MOFED pod spins up an `openshift-driver-toolkit-ctr` container that compiles the raw mirrored driver from `registry-arm.server.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64`
 
-The workflow logs is:
+The workflow logs are as follows:
 
 
-- The MOFED container waits for the driver to be built
+### The MOFED container waits for the driver to be built
 
 ```bash
 oc logs -f mofed-rhcos4.18-6f455775d5-ds-djxv9
@@ -256,7 +263,7 @@ RHEL_VERSION=9.4
 [23-Oct-25_15:28:32] Query representors info from [4] devices[23-Oct-25_15:28:32] Copy required files to shared dir with OCP DTK[23-Oct-25_15:28:32] Awaiting openshift driver toolkit to complete NIC driver build, next query in 300 sec 
 ```
 
-- The *openshift-driver-toolkit-ctr* starts to build the driver
+### The openshift-driver-toolkit-ctr starts to build the driver
 
 ```bash
 Build kernel-mft 4.33.0 RPM
@@ -267,7 +274,7 @@ Running  rpmbuild --rebuild  --define '_topdir /var/tmp/OFED_topdir' --define '_
 
 ```
 
-When the driver is compiled, the mofed continues:
+### Once the driver is compiled, the MOFED container continues
 
 ```bash
 Verifying...                          ########################################
@@ -284,7 +291,7 @@ kmod-kernel-mft-mlnx-4.33.0-1.rhel9u4 ########################################
 [23-Oct-25_15:33:34] NVIDIA driver container exec end, sleeping
 ```
 
-Finally, all pods are up and running successfully:
+### Finally, all pods are up and running successfully
 ```bash
 $ oc get pods -n nvidia-network-operator
 NAME                                                          READY   STATUS    RESTARTS   AGE
