@@ -270,7 +270,9 @@ Build kernel-mft 4.33.0 RPM
 Running  rpmbuild --rebuild  --define '_topdir /var/tmp/OFED_topdir' --define '_sourcedir %{_topdir}/SOURCES' -
 ....... 
 ...........
-[23-Oct-25_15:30:56] Executing command: touch /mnt/shared-doca-driver-toolkit/dtk_done_compile_25_07_0_9_7_0[23-Oct-25_15:30:56] Executing command: rm /mnt/shared-doca-driver-toolkit/dtk_start_compile[23-Oct-25_15:30:56] DTK driver build script end
+[23-Oct-25_15:30:56] Executing command: touch /mnt/shared-doca-driver-toolkit/dtk_done_compile_25_07_0_9_7_0
+[23-Oct-25_15:30:56] Executing command: rm /mnt/shared-doca-driver-toolkit/dtk_start_compile
+[23-Oct-25_15:30:56] DTK driver build script end
 
 ```
 
