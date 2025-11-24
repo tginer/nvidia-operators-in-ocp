@@ -1,0 +1,87 @@
+Name:           nvidia-mig-manager
+Selector:       app=nvidia-mig-manager
+Node-Selector:  nvidia.com/gpu.deploy.mig-manager=true
+Labels:         app=nvidia-mig-manager
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 481918348
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  0 Running / 1 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-mig-manager
+  Service Account:  nvidia-mig-manager
+  Init Containers:
+   toolkit-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      until [ -f /run/nvidia/validations/toolkit-ready ]; do echo waiting for nvidia container toolkit to be setup; sleep 5; done
+    Environment:  <none>
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+  Containers:
+   nvidia-mig-manager:
+    Image:      nvcr.io/nvidia/cloud-native/k8s-mig-manager@sha256:9194a84d3ff2d99886653add3867ec8ee03755442a6d75844932812a12a968de
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/sh
+      -c
+    Args:
+      /bin/entrypoint.sh
+    Environment:
+      NODE_NAME:                       (v1:spec.nodeName)
+      CONFIG_FILE:                    /mig-parted-config/config.yaml
+      GPU_CLIENTS_FILE:               /gpu-clients/clients.yaml
+      DEFAULT_GPU_CLIENTS_NAMESPACE:   (v1:metadata.namespace)
+    Mounts:
+      /bin/entrypoint.sh from nvidia-mig-manager-entrypoint (ro,path="entrypoint.sh")
+      /driver-root from driver-install-dir (rw)
+      /gpu-clients from gpu-clients (rw)
+      /host from host-root (rw)
+      /mig-parted-config from mig-parted-config (rw)
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /sys from host-sys (rw)
+      /var/run/cdi from cdi-root (rw)
+  Volumes:
+   nvidia-mig-manager-entrypoint:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      nvidia-mig-manager-entrypoint
+    Optional:  false
+   host-sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  Directory
+   mig-parted-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      default-mig-parted-config
+    Optional:  false
+   run-nvidia-validations:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/validations
+    HostPathType:  DirectoryOrCreate
+   driver-install-dir:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver
+    HostPathType:  DirectoryOrCreate
+   host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+   gpu-clients:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      default-gpu-clients
+    Optional:  false
+   cdi-root:
+    Type:               HostPath (bare host directory volume)
+    Path:               /var/run/cdi
+    HostPathType:       DirectoryOrCreate
+  Priority Class Name:  system-node-critical
+Events:                 <none>

@@ -1,0 +1,86 @@
+Name:                 nvidia-node-status-exporter-cd78t
+Namespace:            nvidia-gpu-operator
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Service Account:      nvidia-node-status-exporter
+Node:                 sno-arm/192.168.44.65
+Start Time:           Fri, 21 Nov 2025 03:51:39 -0500
+Labels:               app=nvidia-node-status-exporter
+                      controller-revision-hash=6d4bbcd578
+                      pod-template-generation=1
+Annotations:          k8s.ovn.org/pod-networks:
+                        {"default":{"ip_addresses":["10.254.0.27/23"],"mac_address":"0a:58:0a:fe:00:1b","gateway_ips":["10.254.0.1"],"routes":[{"dest":"10.254.0.0...
+                      k8s.v1.cni.cncf.io/network-status:
+                        [{
+                            "name": "ovn-kubernetes",
+                            "interface": "eth0",
+                            "ips": [
+                                "10.254.0.27"
+                            ],
+                            "mac": "0a:58:0a:fe:00:1b",
+                            "default": true,
+                            "dns": {}
+                        }]
+                      openshift.io/scc: lvms-vgmanager
+Status:               Running
+IP:                   10.254.0.27
+IPs:
+  IP:           10.254.0.27
+Controlled By:  DaemonSet/nvidia-node-status-exporter
+Containers:
+  nvidia-node-status-exporter:
+    Container ID:  cri-o://872655673c0746554b8663cff0699342d3e553308903f1a8dc7208b3e0672613
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      nvcr.io/nvidia/gpu-operator@sha256:04d31f9babb5567fe34d1b68124cf55fb5cddcf1e8c2d8a40fa5154d221a24ce
+    Port:          8000/TCP
+    Host Port:     0/TCP
+    Command:
+      nvidia-validator
+    State:          Running
+      Started:      Fri, 21 Nov 2025 06:49:02 -0500
+    Ready:          True
+    Restart Count:  1
+    Environment:
+      NVIDIA_VISIBLE_DEVICES:  void
+      COMPONENT:               metrics
+      METRICS_PORT:            8000
+      NODE_NAME:                (v1:spec.nodeName)
+      OPERATOR_NAMESPACE:      nvidia-gpu-operator (v1:metadata.namespace)
+    Mounts:
+      /host from host-root (ro)
+      /run/nvidia from run-nvidia (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-j4p4v (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  run-nvidia:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia
+    HostPathType:  Directory
+  host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  kube-api-access-j4p4v:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+    ConfigMapName:           openshift-service-ca.crt
+    ConfigMapOptional:       <nil>
+QoS Class:                   BestEffort
+Node-Selectors:              nvidia.com/gpu.deploy.node-status-exporter=true
+Tolerations:                 node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+                             nvidia.com/gpu:NoSchedule op=Exists
+Events:                      <none>

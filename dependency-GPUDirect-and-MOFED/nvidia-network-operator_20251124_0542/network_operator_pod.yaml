@@ -1,0 +1,367 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+        {
+          "apiVersion": "mellanox.com/v1alpha1",
+          "kind": "HostDeviceNetwork",
+          "metadata": {
+            "name": "example-hostdevice-network"
+          },
+          "spec": {
+            "ipam": "{\n  \"type\": \"whereabouts\",\n  \"range\": \"192.168.3.225/28\",\n  \"exclude\": [\n   \"192.168.3.229/30\",\n   \"192.168.3.236/32\"\n  ]\n}\n",
+            "networkNamespace": "default",
+            "resourceName": "hostdev"
+          }
+        },
+        {
+          "apiVersion": "mellanox.com/v1alpha1",
+          "kind": "IPoIBNetwork",
+          "metadata": {
+            "name": "example-ipoibnetwork"
+          },
+          "spec": {
+            "ipam": "{\n  \"type\": \"whereabouts\",\n  \"range\": \"192.168.6.225/28\",\n  \"exclude\": [\n   \"192.168.6.229/30\",\n   \"192.168.6.236/32\"\n  ]\n}\n",
+            "master": "ibs3f1",
+            "networkNamespace": "default"
+          }
+        },
+        {
+          "apiVersion": "mellanox.com/v1alpha1",
+          "kind": "MacvlanNetwork",
+          "metadata": {
+            "name": "example-macvlannetwork"
+          },
+          "spec": {
+            "ipam": "{\n  \"type\": \"whereabouts\",\n  \"range\": \"192.168.2.225/24\",\n  \"exclude\": [\n   \"192.168.2.229/30\",\n   \"192.168.2.236/32\"\n  ]\n}\n",
+            "master": "ens2f0",
+            "mode": "bridge",
+            "mtu": 1500,
+            "networkNamespace": "default"
+          }
+        },
+        {
+          "apiVersion": "mellanox.com/v1alpha1",
+          "kind": "NicClusterPolicy",
+          "metadata": {
+            "name": "nic-cluster-policy"
+          },
+          "spec": {
+            "ofedDriver": {
+              "image": "doca-driver",
+              "livenessProbe": {
+                "initialDelaySeconds": 30,
+                "periodSeconds": 30
+              },
+              "readinessProbe": {
+                "initialDelaySeconds": 10,
+                "periodSeconds": 30
+              },
+              "repository": "nvcr.io/nvidia/mellanox",
+              "startupProbe": {
+                "initialDelaySeconds": 10,
+                "periodSeconds": 20
+              },
+              "terminationGracePeriodSeconds": 300,
+              "upgradePolicy": {
+                "autoUpgrade": true,
+                "drain": {
+                  "deleteEmptyDir": true,
+                  "enable": true,
+                  "force": true,
+                  "podSelector": "",
+                  "timeoutSeconds": 300
+                },
+                "maxParallelUpgrades": 1
+              },
+              "version": "doca3.1.0-25.07-0.9.7.0-0"
+            },
+            "rdmaSharedDevicePlugin": {
+              "config": "{\n  \"configList\": [\n    {\n      \"resourceName\": \"rdma_shared_device_a\",\n      \"rdmaHcaMax\": 63,\n      \"selectors\": {\n        \"vendors\": [\"15b3\"]\n      }\n    }\n  ]\n}\n",
+              "image": "k8s-rdma-shared-dev-plugin",
+              "repository": "nvcr.io/nvidia/mellanox",
+              "version": "sha256:a87096761d155eeb6f470e042d2d167bb466d57e63b4aba957f57d745e15a9b2"
+            }
+          }
+        }
+      ]
+    capabilities: Basic Install
+    containerImage: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+    createdAt: "2025-08-21T19:12:20Z"
+    description: Deploy and manage NVIDIA networking resources in Kubernetes
+    features.operators.openshift.io/cnf: "false"
+    features.operators.openshift.io/cni: "true"
+    features.operators.openshift.io/csi: "false"
+    features.operators.openshift.io/disconnected: "true"
+    features.operators.openshift.io/fips-compliant: "false"
+    features.operators.openshift.io/proxy-aware: "true"
+    features.operators.openshift.io/tls-profiles: "false"
+    features.operators.openshift.io/token-auth-aws: "false"
+    features.operators.openshift.io/token-auth-azure: "false"
+    features.operators.openshift.io/token-auth-gcp: "false"
+    k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.254.0.55/23"],"mac_address":"0a:58:0a:fe:00:37","gateway_ips":["10.254.0.1"],"routes":[{"dest":"10.254.0.0/16","nextHop":"10.254.0.1"},{"dest":"172.31.0.0/16","nextHop":"10.254.0.1"},{"dest":"169.254.0.5/32","nextHop":"10.254.0.1"},{"dest":"100.64.0.0/16","nextHop":"10.254.0.1"}],"ip_address":"10.254.0.55/23","gateway_ip":"10.254.0.1","role":"primary"}}'
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "ovn-kubernetes",
+          "interface": "eth0",
+          "ips": [
+              "10.254.0.55"
+          ],
+          "mac": "0a:58:0a:fe:00:37",
+          "default": true,
+          "dns": {}
+      }]
+    kubectl.kubernetes.io/default-container: manager
+    olm.operatorGroup: nvidia-network-operator
+    olm.operatorNamespace: nvidia-network-operator
+    olm.targetNamespaces: nvidia-network-operator
+    olmcahash: 6573b0a59f5699183df17a92f8885d4f4da7182b645a1e1ac9ecfe054d0c209c
+    openshift.io/scc: privileged
+    operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"HostDeviceNetwork","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"IPoIBNetwork","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"MacvlanNetwork","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"NicClusterPolicy","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"nvidia-network-operator","version":"25.7.0"}}]}'
+    operatorframework.io/suggested-namespace: nvidia-network-operator
+    operators.operatorframework.io/builder: operator-sdk-v1.33.0
+    operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
+    provider: NVIDIA
+    repository: https://github.com/Mellanox/network-operator/
+    support: NVIDIA
+  creationTimestamp: "2025-11-20T16:28:43Z"
+  generateName: nvidia-network-operator-controller-manager-58945d69c-
+  labels:
+    control-plane: nvidia-network-operator-controller
+    nvidia.com/ofed-driver-upgrade-drain.skip: "true"
+    pod-template-hash: 58945d69c
+  name: nvidia-network-operator-controller-manager-58945d69c-647dc
+  namespace: nvidia-network-operator
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: nvidia-network-operator-controller-manager-58945d69c
+    uid: 0ff08226-72c2-4f3e-8be4-850fff2f7a20
+  resourceVersion: "448867"
+  uid: 162562ff-f6a7-4ed9-81c9-3b6621abfb19
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - preference:
+          matchExpressions:
+          - key: node-role.kubernetes.io/master
+            operator: In
+            values:
+            - ""
+        weight: 1
+      - preference:
+          matchExpressions:
+          - key: node-role.kubernetes.io/control-plane
+            operator: In
+            values:
+            - ""
+        weight: 1
+  containers:
+  - args:
+    - --leader-elect
+    command:
+    - /manager
+    env:
+    - name: ENABLE_WEBHOOKS
+      value: "true"
+    - name: STATE_MANIFEST_BASE_DIR
+      value: /manifests
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: USE_DTK
+      value: "true"
+    - name: OFED_INIT_CONTAINER_IMAGE
+      value: nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+    - name: OPERATOR_CONDITION_NAME
+      value: nvidia-network-operator.v25.7.0
+    image: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 8081
+        scheme: HTTP
+      initialDelaySeconds: 15
+      periodSeconds: 20
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: manager
+    ports:
+    - containerPort: 9443
+      name: webhook-server
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /readyz
+        port: 8081
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 5m
+        memory: 64Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /tmp/k8s-webhook-server/serving-certs
+      name: webhook-cert
+    - mountPath: /apiserver.local.config/certificates
+      name: apiservice-cert
+    - mountPath: /etc/pki/tls/certs/
+      name: custom-registry-ca
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-vnrlp
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: sno-arm
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    runAsUser: 65532
+  serviceAccount: nvidia-network-operator-controller-manager
+  serviceAccountName: nvidia-network-operator-controller-manager
+  terminationGracePeriodSeconds: 10
+  tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    operator: Equal
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/control-plane
+    operator: Equal
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: cert
+    secret:
+      defaultMode: 420
+      secretName: webhook-server-cert
+  - name: apiservice-cert
+    secret:
+      defaultMode: 420
+      items:
+      - key: tls.crt
+        path: apiserver.crt
+      - key: tls.key
+        path: apiserver.key
+      secretName: nvidia-network-operator-controller-manager-service-cert
+  - name: webhook-cert
+    secret:
+      defaultMode: 420
+      items:
+      - key: tls.crt
+        path: tls.crt
+      - key: tls.key
+        path: tls.key
+      secretName: nvidia-network-operator-controller-manager-service-cert
+  - configMap:
+      defaultMode: 420
+      name: arm-registry-config
+    name: custom-registry-ca
+  - name: kube-api-access-vnrlp
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+      - configMap:
+          items:
+          - key: service-ca.crt
+            path: service-ca.crt
+          name: openshift-service-ca.crt
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2025-11-21T11:48:57Z"
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2025-11-20T16:28:43Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2025-11-21T11:49:06Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2025-11-21T11:49:06Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2025-11-20T16:28:43Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://3970c448dc24a77f31a85c51e8f6656bc558ea2257f755db5892ddd9541d5926
+    image: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+    imageID: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+    lastState: {}
+    name: manager
+    ready: true
+    restartCount: 6
+    started: true
+    state:
+      running:
+        startedAt: "2025-11-21T11:48:57Z"
+    volumeMounts:
+    - mountPath: /tmp/k8s-webhook-server/serving-certs
+      name: webhook-cert
+    - mountPath: /apiserver.local.config/certificates
+      name: apiservice-cert
+    - mountPath: /etc/pki/tls/certs/
+      name: custom-registry-ca
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-vnrlp
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 192.168.44.65
+  hostIPs:
+  - ip: 192.168.44.65
+  phase: Running
+  podIP: 10.254.0.55
+  podIPs:
+  - ip: 10.254.0.55
+  qosClass: Burstable
+  startTime: "2025-11-20T16:28:43Z"

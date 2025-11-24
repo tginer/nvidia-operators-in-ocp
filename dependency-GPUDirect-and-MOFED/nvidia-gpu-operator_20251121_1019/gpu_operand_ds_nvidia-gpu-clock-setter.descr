@@ -1,0 +1,45 @@
+Name:           nvidia-gpu-clock-setter
+Selector:       app=nvidia-gpu-clock-setter
+Node-Selector:  feature.node.kubernetes.io/pci-10de.present=true
+Labels:         app=nvidia-gpu-clock-setter
+Annotations:    deprecated.daemonset.template.generation: 1
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 0
+Number of Nodes Scheduled with Up-to-date Pods: 0
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-gpu-clock-setter
+  Service Account:  nvidia-gpu-clock-setter
+  Containers:
+   gpu-clock-setter:
+    Image:      nvcr.io/nvidia/cuda@sha256:d19fe621624c4eb6ac931b8558daa3ecc0c3f07f1e2a52e0267e083d22dceade
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/bash
+      -c
+      echo "Setting max GPU clocks..."
+      MAX_CLOCK=$(nvidia-smi -i 0 --query-supported-clocks=graphics --format=csv,noheader,nounits | sort -h | tail -n 1)
+      nvidia-smi -i 0 -lgc $MAX_CLOCK
+      sleep infinity         
+      
+    Limits:
+      cpu:     100m
+      memory:  100Mi
+    Requests:
+      cpu:        10m
+      memory:     50Mi
+    Environment:  <none>
+    Mounts:
+      /run/nvidia/driver from nvidia-driver (rw)
+  Volumes:
+   nvidia-driver:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver
+    HostPathType:  
+Events:
+  Type     Reason        Age                  From                  Message
+  ----     ------        ----                 ----                  -------
+  Warning  FailedCreate  8s (x51 over 3h31m)  daemonset-controller  Error creating: pods "nvidia-gpu-clock-setter-" is forbidden: unable to validate against any security context constraint: [provider "anyuid": Forbidden: not usable by user or serviceaccount, provider restricted-v2: .spec.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used, spec.volumes[0]: Invalid value: "hostPath": hostPath volumes are not allowed to be used, provider restricted-v2: .containers[0].privileged: Invalid value: true: Privileged containers are not allowed, provider restricted-v2: .containers[0].hostPID: Invalid value: true: Host PID is not allowed to be used, provider "restricted": Forbidden: not usable by user or serviceaccount, provider "nonroot-v2": Forbidden: not usable by user or serviceaccount, provider "nonroot": Forbidden: not usable by user or serviceaccount, provider "hostmount-anyuid": Forbidden: not usable by user or serviceaccount, provider "hostnetwork-v2": Forbidden: not usable by user or serviceaccount, provider "hostnetwork": Forbidden: not usable by user or serviceaccount, provider "hostaccess": Forbidden: not usable by user or serviceaccount, provider "nfd-worker": Forbidden: not usable by user or serviceaccount, provider "nfd-topology-updater": Forbidden: not usable by user or serviceaccount, provider "lvms-vgmanager": Forbidden: not usable by user or serviceaccount, provider "nvidia-driver": Forbidden: not usable by user or serviceaccount, provider "nvidia-gpu-feature-discovery": Forbidden: not usable by user or serviceaccount, provider "nvidia-mig-manager": Forbidden: not usable by user or serviceaccount, provider "nvidia-node-status-exporter": Forbidden: not usable by user or serviceaccount, provider "nvidia-operator-validator": Forbidden: not usable by user or serviceaccount, provider "nvidia-dcgm-exporter": Forbidden: not usable by user or serviceaccount, provider "node-exporter": Forbidden: not usable by user or serviceaccount, provider "nvidia-dcgm": Forbidden: not usable by user or serviceaccount, provider "privileged": Forbidden: not usable by user or serviceaccount]

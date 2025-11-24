@@ -1,0 +1,43 @@
+Name:           nvidia-node-status-exporter
+Selector:       app=nvidia-node-status-exporter
+Node-Selector:  nvidia.com/gpu.deploy.node-status-exporter=true
+Labels:         app=nvidia-node-status-exporter
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 3162408450
+                openshift.io/scc: nvidia-node-status-exporter
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 1
+Number of Nodes Misscheduled: 0
+Pods Status:  1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-node-status-exporter
+  Service Account:  nvidia-node-status-exporter
+  Containers:
+   nvidia-node-status-exporter:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       8000/TCP
+    Host Port:  0/TCP
+    Command:
+      nvidia-validator
+    Environment:
+      NVIDIA_VISIBLE_DEVICES:  void
+      COMPONENT:               metrics
+      METRICS_PORT:            8000
+      NODE_NAME:                (v1:spec.nodeName)
+      OPERATOR_NAMESPACE:       (v1:metadata.namespace)
+    Mounts:
+      /host from host-root (ro)
+      /run/nvidia from run-nvidia (rw)
+  Volumes:
+   run-nvidia:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia
+    HostPathType:  Directory
+   host-root:
+    Type:               HostPath (bare host directory volume)
+    Path:               /
+    HostPathType:       
+  Priority Class Name:  system-node-critical
+Events:                 <none>

@@ -1,0 +1,195 @@
+Name:           nvidia-driver-daemonset-418.94.202510230424-0
+Selector:       app=nvidia-driver-daemonset-418.94.202510230424-0
+Node-Selector:  feature.node.kubernetes.io/system-os_release.OSTREE_VERSION=418.94.202510230424-0,nvidia.com/gpu.deploy.driver=true
+Labels:         app=nvidia-driver-daemonset-418.94.202510230424-0
+                app.kubernetes.io/component=nvidia-driver
+                nvidia.com/precompiled=false
+                openshift.driver-toolkit=true
+                openshift.driver-toolkit.rhcos=418.94.202510230424-0
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 2560185714
+                openshift.io/scc: nvidia-driver
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-driver-daemonset-418.94.202510230424-0
+                    app.kubernetes.io/component=nvidia-driver
+                    nvidia.com/precompiled=false
+                    openshift.driver-toolkit=true
+  Annotations:      kubectl.kubernetes.io/default-container: nvidia-driver-ctr
+  Service Account:  nvidia-driver
+  Init Containers:
+   k8s-driver-manager:
+    Image:      nvcr.io/nvidia/cloud-native/k8s-driver-manager@sha256:a6c12abacc9c4f51d3653c90fcad32f19799069889338601407eba05fea4ba18
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      driver-manager
+    Args:
+      uninstall_driver
+    Environment:
+      NODE_NAME:                    (v1:spec.nodeName)
+      NVIDIA_VISIBLE_DEVICES:      void
+      ENABLE_GPU_POD_EVICTION:     true
+      ENABLE_AUTO_DRAIN:           false
+      DRAIN_USE_FORCE:             false
+      DRAIN_POD_SELECTOR_LABEL:    
+      DRAIN_TIMEOUT_SECONDS:       0s
+      DRAIN_DELETE_EMPTYDIR_DATA:  false
+      OPERATOR_NAMESPACE:           (v1:metadata.namespace)
+      GPU_DIRECT_RDMA_ENABLED:     true
+    Mounts:
+      /host from host-root (ro)
+      /run/mellanox/drivers from run-mellanox-drivers (rw)
+      /run/nvidia from run-nvidia (rw)
+      /sys from host-sys (rw)
+  Containers:
+   nvidia-driver-ctr:
+    Image:      nvcr.io/nvidia/driver@sha256:317c7ab01f28c87dc8c209b38c49fb2758a595d9ffbc1d71e18530788dcf34be
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      ocp_dtk_entrypoint
+    Args:
+      nv-ctr-run-with-dtk
+    Startup:  exec [sh -c nvidia-smi && touch /run/nvidia/validations/.driver-ctr-ready] delay=60s timeout=60s period=10s #success=1 #failure=120
+    Environment:
+      NODE_NAME:                 (v1:spec.nodeName)
+      NODE_IP:                   (v1:status.hostIP)
+      KERNEL_MODULE_TYPE:       auto
+      GPU_DIRECT_RDMA_ENABLED:  true
+      OPENSHIFT_VERSION:        4.18
+    Mounts:
+      /dev/log from dev-log (rw)
+      /etc/pki/ca-trust/extracted/pem from gpu-operator-trusted-ca (ro)
+      /host-etc/os-release from host-os-release (ro)
+      /lib/firmware from nv-firmware (rw)
+      /mnt/shared-nvidia-driver-toolkit from shared-nvidia-driver-toolkit (rw)
+      /run/mellanox/drivers from run-mellanox-drivers (rw)
+      /run/mellanox/drivers/usr/src from mlnx-ofed-usr-src (rw)
+      /run/nvidia from run-nvidia (rw)
+      /run/nvidia-fabricmanager from run-nvidia-fabricmanager (rw)
+      /run/nvidia-topologyd from run-nvidia-topologyd (rw)
+      /sys/devices/system/memory/auto_online_blocks from sysfs-memory-online (rw)
+      /sys/module/firmware_class/parameters/path from firmware-search-path (rw)
+      /var/log from var-log (rw)
+   nvidia-peermem-ctr:
+    Image:      nvcr.io/nvidia/driver@sha256:317c7ab01f28c87dc8c209b38c49fb2758a595d9ffbc1d71e18530788dcf34be
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      nvidia-driver
+    Args:
+      reload_nvidia_peermem
+    Liveness:     exec [sh -c nvidia-driver probe_nvidia_peermem] delay=30s timeout=10s period=30s #success=1 #failure=1
+    Startup:      exec [sh -c nvidia-driver probe_nvidia_peermem] delay=10s timeout=10s period=10s #success=1 #failure=120
+    Environment:  <none>
+    Mounts:
+      /dev/log from dev-log (ro)
+      /run/mellanox/drivers from run-mellanox-drivers (rw)
+      /run/nvidia from run-nvidia (rw)
+      /var/log from var-log (rw)
+   nvidia-gdrcopy-ctr:
+    Image:      nvcr.io/nvidia/cloud-native/gdrdrv@sha256:5c4e61f7ba83d7a64ff2523d447c209ce5bde1ddc79acaf1f32f19620b4912d6
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      ocp_dtk_entrypoint
+    Args:
+      gdrcopy-ctr-run-with-dtk
+    Startup:      exec [sh -c lsmod | grep gdrdrv] delay=10s timeout=10s period=10s #success=1 #failure=120
+    Environment:  <none>
+    Mounts:
+      /dev/log from dev-log (ro)
+      /mnt/shared-nvidia-driver-toolkit from shared-nvidia-driver-toolkit (rw)
+      /run/nvidia from run-nvidia (rw)
+      /var/log from var-log (rw)
+   openshift-driver-toolkit-ctr:
+    Image:      quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:75798070ee8bba72891c1ef66858117d352b2b98a4072c4ce5e6424d03845930
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      bash
+      -xc
+    Args:
+      until [ -f /mnt/shared-nvidia-driver-toolkit/dir_prepared ]; do echo  Waiting for nvidia-driver-ctr container to prepare the shared directory ...; sleep 10; done; exec /mnt/shared-nvidia-driver-toolkit/ocp_dtk_entrypoint dtk-build-driver
+    Environment:
+      RHCOS_VERSION:           418.94.202510230424-0
+      NVIDIA_VISIBLE_DEVICES:  void
+      GDRCOPY_ENABLED:         true
+    Mounts:
+      /host-etc/os-release from host-os-release (ro)
+      /mnt/shared-nvidia-driver-toolkit from shared-nvidia-driver-toolkit (rw)
+      /run/mellanox/drivers/usr/src from mlnx-ofed-usr-src (rw)
+      /var/log from var-log (rw)
+  Volumes:
+   run-nvidia:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia
+    HostPathType:  DirectoryOrCreate
+   var-log:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/log
+    HostPathType:  
+   dev-log:
+    Type:          HostPath (bare host directory volume)
+    Path:          /dev/log
+    HostPathType:  
+   host-os-release:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/os-release
+    HostPathType:  
+   run-nvidia-fabricmanager:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia-fabricmanager
+    HostPathType:  DirectoryOrCreate
+   run-nvidia-topologyd:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia-topologyd
+    HostPathType:  DirectoryOrCreate
+   mlnx-ofed-usr-src:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/mellanox/drivers/usr/src
+    HostPathType:  DirectoryOrCreate
+   run-mellanox-drivers:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/mellanox/drivers
+    HostPathType:  DirectoryOrCreate
+   run-nvidia-validations:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/validations
+    HostPathType:  DirectoryOrCreate
+   host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+   host-sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  Directory
+   firmware-search-path:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys/module/firmware_class/parameters/path
+    HostPathType:  
+   sysfs-memory-online:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys/devices/system/memory/auto_online_blocks
+    HostPathType:  
+   nv-firmware:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver/lib/firmware
+    HostPathType:  DirectoryOrCreate
+   gpu-operator-trusted-ca:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      gpu-operator-trusted-ca
+    Optional:  false
+   shared-nvidia-driver-toolkit:
+    Type:               EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:             
+    SizeLimit:          <unset>
+  Priority Class Name:  system-node-critical
+Events:                 <none>

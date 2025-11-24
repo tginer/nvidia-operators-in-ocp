@@ -1,0 +1,4 @@
+NAME                                                         READY   STATUS    RESTARTS   AGE     IP              NODE      NOMINATED NODE   READINESS GATES
+mofed-rhcos4.18-554bdbd7cf-ds-d4dv8                          2/2     Running   0          2d22h   192.168.44.65   sno-arm   <none>           <none>
+nvidia-network-operator-controller-manager-58945d69c-647dc   1/1     Running   6          3d18h   10.254.0.55     sno-arm   <none>           <none>
+rdma-shared-dp-ds-n2mx6                                      1/1     Running   0          2d22h   192.168.44.65   sno-arm   <none>           <none>

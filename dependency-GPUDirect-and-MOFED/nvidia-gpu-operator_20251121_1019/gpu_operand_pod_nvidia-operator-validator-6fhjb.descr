@@ -1,0 +1,214 @@
+Name:                 nvidia-operator-validator-6fhjb
+Namespace:            nvidia-gpu-operator
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Service Account:      nvidia-operator-validator
+Node:                 sno-arm/192.168.44.65
+Start Time:           Fri, 21 Nov 2025 06:51:41 -0500
+Labels:               app=nvidia-operator-validator
+                      app.kubernetes.io/part-of=gpu-operator
+                      controller-revision-hash=7bbf747564
+                      pod-template-generation=1
+Annotations:          k8s.ovn.org/pod-networks:
+                        {"default":{"ip_addresses":["10.254.0.13/23"],"mac_address":"0a:58:0a:fe:00:0d","gateway_ips":["10.254.0.1"],"routes":[{"dest":"10.254.0.0...
+                      k8s.v1.cni.cncf.io/network-status:
+                        [{
+                            "name": "ovn-kubernetes",
+                            "interface": "eth0",
+                            "ips": [
+                                "10.254.0.13"
+                            ],
+                            "mac": "0a:58:0a:fe:00:0d",
+                            "default": true,
+                            "dns": {}
+                        }]
+                      openshift.io/scc: nvidia-operator-validator
+Status:               Pending
+IP:                   10.254.0.13
+IPs:
+  IP:           10.254.0.13
+Controlled By:  DaemonSet/nvidia-operator-validator
+Init Containers:
+  driver-validation:
+    Container ID:  cri-o://5c194a2f202b905756a32ee5b3331e6992b614fbd3b15cb7591f9eace22342dc
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      nvcr.io/nvidia/gpu-operator@sha256:04d31f9babb5567fe34d1b68124cf55fb5cddcf1e8c2d8a40fa5154d221a24ce
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    State:          Running
+      Started:      Fri, 21 Nov 2025 06:51:42 -0500
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      WITH_WAIT:           true
+      COMPONENT:           driver
+      OPERATOR_NAMESPACE:  nvidia-gpu-operator (v1:metadata.namespace)
+    Mounts:
+      /host from host-root (ro)
+      /host-dev-char from host-dev-char (rw)
+      /run/nvidia/driver from driver-install-dir (rw)
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-t6vdv (ro)
+  gdrcopy-validation:
+    Container ID:  
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      WITH_WAIT:  true
+      COMPONENT:  gdrcopy
+      NODE_NAME:   (v1:spec.nodeName)
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-t6vdv (ro)
+  toolkit-validation:
+    Container ID:  
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      NVIDIA_VISIBLE_DEVICES:  all
+      WITH_WAIT:               false
+      COMPONENT:               toolkit
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-t6vdv (ro)
+  cuda-validation:
+    Container ID:  
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      WITH_WAIT:                    false
+      COMPONENT:                    cuda
+      NODE_NAME:                     (v1:spec.nodeName)
+      OPERATOR_NAMESPACE:           nvidia-gpu-operator (v1:metadata.namespace)
+      VALIDATOR_IMAGE:              nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+      VALIDATOR_IMAGE_PULL_POLICY:  
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-t6vdv (ro)
+  plugin-validation:
+    Container ID:  
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      COMPONENT:                    plugin
+      WITH_WAIT:                    false
+      WITH_WORKLOAD:                false
+      MIG_STRATEGY:                 single
+      NODE_NAME:                     (v1:spec.nodeName)
+      OPERATOR_NAMESPACE:           nvidia-gpu-operator (v1:metadata.namespace)
+      VALIDATOR_IMAGE:              nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+      VALIDATOR_IMAGE_PULL_POLICY:  
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-t6vdv (ro)
+Containers:
+  nvidia-operator-validator:
+    Container ID:  
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      echo all validations are successful; while true; do sleep 86400; done
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-t6vdv (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 False 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  run-nvidia-validations:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/validations
+    HostPathType:  DirectoryOrCreate
+  driver-install-dir:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver
+    HostPathType:  
+  host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  host-dev-char:
+    Type:          HostPath (bare host directory volume)
+    Path:          /dev/char
+    HostPathType:  
+  kube-api-access-t6vdv:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+    ConfigMapName:           openshift-service-ca.crt
+    ConfigMapOptional:       <nil>
+QoS Class:                   BestEffort
+Node-Selectors:              nvidia.com/gpu.deploy.operator-validator=true
+Tolerations:                 node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+                             nvidia.com/gpu:NoSchedule op=Exists
+Events:                      <none>

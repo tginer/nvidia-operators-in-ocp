@@ -1,0 +1,43 @@
+Name:           nvidia-dcgm
+Selector:       app=nvidia-dcgm
+Node-Selector:  nvidia.com/gpu.deploy.dcgm=true
+Labels:         app=nvidia-dcgm
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 25488644
+                openshift.io/scc: hostmount-anyuid
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  0 Running / 1 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-dcgm
+  Service Account:  nvidia-dcgm
+  Init Containers:
+   toolkit-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      until [ -f /run/nvidia/validations/toolkit-ready ]; do echo waiting for nvidia container stack to be setup; sleep 5; done
+    Environment:  <none>
+    Mounts:
+      /run/nvidia from run-nvidia (rw)
+  Containers:
+   nvidia-dcgm-ctr:
+    Image:        nvcr.io/nvidia/cloud-native/dcgm@sha256:d42cd2afe032d9bfcb101cc2f739683b123a6c744f2732f221362a3cac776806
+    Port:         5555/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:
+   run-nvidia:
+    Type:               HostPath (bare host directory volume)
+    Path:               /run/nvidia
+    HostPathType:       Directory
+  Priority Class Name:  system-node-critical
+Events:                 <none>

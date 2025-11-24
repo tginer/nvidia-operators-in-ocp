@@ -1,0 +1,70 @@
+Name:           nvidia-device-plugin-mps-control-daemon
+Selector:       app=nvidia-device-plugin-mps-control-daemon
+Node-Selector:  nvidia.com/gpu.deploy.device-plugin=true,nvidia.com/mps.capable=true
+Labels:         app=nvidia-device-plugin-mps-control-daemon
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 3152800796
+                openshift.io/scc: hostmount-anyuid
+Desired Number of Nodes Scheduled: 0
+Current Number of Nodes Scheduled: 0
+Number of Nodes Scheduled with Up-to-date Pods: 0
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-device-plugin-mps-control-daemon
+  Service Account:  nvidia-device-plugin
+  Init Containers:
+   toolkit-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      until [ -f /run/nvidia/validations/toolkit-ready ]; do echo waiting for nvidia container stack to be setup; sleep 5; done
+    Environment:  <none>
+    Mounts:
+      /run/nvidia from run-nvidia (rw)
+   mps-control-daemon-mounts:
+    Image:      nvcr.io/nvidia/k8s-device-plugin@sha256:2d16df5f3f12081b4bd6b317cf697e5c7a195c53cec7e0bab756db02a06b985c
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      mps-control-daemon
+      mount-shm
+    Environment:  <none>
+    Mounts:
+      /mps from mps-root (rw)
+  Containers:
+   mps-control-daemon-ctr:
+    Image:      nvcr.io/nvidia/k8s-device-plugin@sha256:2d16df5f3f12081b4bd6b317cf697e5c7a195c53cec7e0bab756db02a06b985c
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      mps-control-daemon
+    Environment:
+      NODE_NAME:                    (v1:spec.nodeName)
+      NVIDIA_VISIBLE_DEVICES:      all
+      NVIDIA_DRIVER_CAPABILITIES:  compute,utility
+      MIG_STRATEGY:                single
+      NVIDIA_MIG_MONITOR_DEVICES:  all
+    Mounts:
+      /dev/shm from mps-shm (rw)
+      /mps from mps-root (rw)
+  Volumes:
+   run-nvidia:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia
+    HostPathType:  Directory
+   mps-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/mps
+    HostPathType:  DirectoryOrCreate
+   mps-shm:
+    Type:               HostPath (bare host directory volume)
+    Path:               /run/nvidia/mps/shm
+    HostPathType:       
+  Priority Class Name:  system-node-critical
+Events:                 <none>

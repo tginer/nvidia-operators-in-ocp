@@ -1,0 +1,114 @@
+Name:           nvidia-container-toolkit-daemonset
+Selector:       app=nvidia-container-toolkit-daemonset
+Node-Selector:  nvidia.com/gpu.deploy.container-toolkit=true
+Labels:         app=nvidia-container-toolkit-daemonset
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 2086029998
+                openshift.io/scc: hostmount-anyuid
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  0 Running / 1 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-container-toolkit-daemonset
+  Service Account:  nvidia-container-toolkit
+  Init Containers:
+   driver-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    Environment:
+      WITH_WAIT:           true
+      COMPONENT:           driver
+      OPERATOR_NAMESPACE:   (v1:metadata.namespace)
+    Mounts:
+      /host from host-root (ro)
+      /host-dev-char from host-dev-char (rw)
+      /run/nvidia/driver from driver-install-dir (rw)
+      /run/nvidia/validations from run-nvidia-validations (rw)
+  Containers:
+   nvidia-container-toolkit-ctr:
+    Image:      nvcr.io/nvidia/k8s/container-toolkit@sha256:c0d14372bc5d74e882eb60c5c5580459675bf08a2e4c627422cc949af6e9717d
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/sh
+      -c
+    Args:
+      /bin/entrypoint.sh
+    Environment:
+      ROOT:                                             /usr/local/nvidia
+      NVIDIA_CONTAINER_RUNTIME_MODES_CDI_DEFAULT_KIND:  management.nvidia.com/gpu
+      NVIDIA_VISIBLE_DEVICES:                           void
+      TOOLKIT_PID_FILE:                                 /run/nvidia/toolkit/toolkit.pid
+      CRIO_CONFIG_MODE:                                 hook
+      RUNTIME:                                          crio
+      RUNTIME_CONFIG:                                   /runtime/config-dir/config.toml
+      CRIO_CONFIG:                                      /runtime/config-dir/config.toml
+      RUNTIME_DROP_IN_CONFIG:                           /runtime/config-dir.d/99-nvidia.conf
+      RUNTIME_DROP_IN_CONFIG_HOST_PATH:                 /etc/crio/crio.conf.d/99-nvidia.conf
+    Mounts:
+      /bin/entrypoint.sh from nvidia-container-toolkit-entrypoint (ro,path="entrypoint.sh")
+      /driver-root from driver-install-dir (rw)
+      /host from host-root (ro)
+      /run/nvidia/toolkit from toolkit-root (rw)
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /runtime/config-dir.d/ from crio-drop-in-config (rw)
+      /runtime/config-dir/ from crio-config (rw)
+      /usr/local/nvidia from toolkit-install-dir (rw)
+      /usr/share/containers/oci/hooks.d from crio-hooks (rw)
+      /var/run/cdi from cdi-root (rw)
+  Volumes:
+   nvidia-container-toolkit-entrypoint:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      nvidia-container-toolkit-entrypoint
+    Optional:  false
+   toolkit-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/toolkit
+    HostPathType:  DirectoryOrCreate
+   run-nvidia-validations:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/validations
+    HostPathType:  DirectoryOrCreate
+   driver-install-dir:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver
+    HostPathType:  DirectoryOrCreate
+   host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+   toolkit-install-dir:
+    Type:          HostPath (bare host directory volume)
+    Path:          /usr/local/nvidia
+    HostPathType:  
+   crio-hooks:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/containers/oci/hooks.d
+    HostPathType:  
+   host-dev-char:
+    Type:          HostPath (bare host directory volume)
+    Path:          /dev/char
+    HostPathType:  
+   cdi-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/run/cdi
+    HostPathType:  DirectoryOrCreate
+   crio-config:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/crio
+    HostPathType:  DirectoryOrCreate
+   crio-drop-in-config:
+    Type:               HostPath (bare host directory volume)
+    Path:               /etc/crio/crio.conf.d
+    HostPathType:       DirectoryOrCreate
+  Priority Class Name:  system-node-critical
+Events:                 <none>

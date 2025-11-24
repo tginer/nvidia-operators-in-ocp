@@ -1,0 +1,150 @@
++ [[ ./network-operator-mustgather.sh == \/\u\s\r\/\b\i\n\/\g\a\t\h\e\r ]]
+++ kubectl get clusterversion/version --ignore-not-found -oname
++ ocp_cluster=clusterversion.config.openshift.io/version
++ [[ -n clusterversion.config.openshift.io/version ]]
++ echo 'Running in OpenShift.'
++ echo 'Get the cluster version'
++ kubectl get clusterversion/version -oyaml
++ echo 'Get the operator namespaces'
+++ kubectl get pods -lcontrol-plane=nvidia-network-operator-controller -oname -A
++ OPERATOR_POD_NAME=pod/nvidia-network-operator-controller-manager-58945d69c-647dc
++ '[' -z pod/nvidia-network-operator-controller-manager-58945d69c-647dc ']'
+++ kubectl get pods -lcontrol-plane=nvidia-network-operator-controller -A '-ojsonpath={.items[].metadata.namespace}' --ignore-not-found
++ OPERATOR_NAMESPACE=nvidia-network-operator
++ echo 'Using '\''nvidia-network-operator'\'' as operator namespace'
++ echo ''
++ echo '#'
++ echo '# NicClusterPolicy'
++ echo '#'
++ echo
+++ kubectl get nicclusterpolicy -oname
++ CLUSTER_POLICY_NAME=nicclusterpolicy.mellanox.com/nic-cluster-policy
++ [[ -n nicclusterpolicy.mellanox.com/nic-cluster-policy ]]
++ echo 'Get nicclusterpolicy.mellanox.com/nic-cluster-policy'
++ kubectl get -oyaml nicclusterpolicy.mellanox.com/nic-cluster-policy
++ echo
++ echo '#'
++ echo '# Nodes and machines'
++ echo '#'
++ echo
++ '[' clusterversion.config.openshift.io/version ']'
++ echo 'Get all the machines'
++ kubectl get machines -A
+error: the server doesn't have a resource type "machines"
++ echo 'Get the labels of the nodes with NVIDIA PCI cards'
++ GPU_PCI_LABELS=(feature.node.kubernetes.io/pci-10de.present feature.node.kubernetes.io/pci-0302_10de.present feature.node.kubernetes.io/pci-0300_10de.present)
++ gpu_pci_nodes=
++ for label in ${GPU_PCI_LABELS[@]}
+++ kubectl get nodes -lfeature.node.kubernetes.io/pci-10de.present -oname
++ gpu_pci_nodes=' node/sno-arm'
++ for label in ${GPU_PCI_LABELS[@]}
+++ kubectl get nodes -lfeature.node.kubernetes.io/pci-0302_10de.present -oname
++ gpu_pci_nodes=' node/sno-arm '
++ for label in ${GPU_PCI_LABELS[@]}
+++ kubectl get nodes -lfeature.node.kubernetes.io/pci-0300_10de.present -oname
++ gpu_pci_nodes=' node/sno-arm  '
++ '[' -z ' node/sno-arm  ' ']'
+++ echo ' node/sno-arm  '
++ for node in $(echo "$gpu_pci_nodes")
++ echo node/sno-arm
++ cut -d/ -f2
++ kubectl get node/sno-arm '-ojsonpath={.metadata.labels}'
++ sed 's|,|,- |g'
++ tr , '\n'
++ sed 's/{"/- /'
++ tr : =
++ sed 's/"//g'
++ sed 's/}/\n/'
++ echo ''
++ echo 'Get the GPU nodes (status)'
++ kubectl get nodes -l nvidia.com/gpu.present=true -o wide
++ echo 'Get the GPU nodes (description)'
++ kubectl describe nodes -l nvidia.com/gpu.present=true
++ echo ''
++ echo '#'
++ echo '# Operator Pod'
++ echo '#'
++ echo
++ echo 'Get the Network Operator Pod (status)'
++ kubectl get pod/nvidia-network-operator-controller-manager-58945d69c-647dc -owide -n nvidia-network-operator
++ echo 'Get the Network Operator Pod (yaml)'
++ kubectl get pod/nvidia-network-operator-controller-manager-58945d69c-647dc -oyaml -n nvidia-network-operator
++ echo 'Get the Network Operator Pod logs'
++ kubectl logs pod/nvidia-network-operator-controller-manager-58945d69c-647dc -n nvidia-network-operator
++ kubectl logs pod/nvidia-network-operator-controller-manager-58945d69c-647dc -n nvidia-network-operator --previous
+Error from server (BadRequest): previous terminated container "manager" in pod "nvidia-network-operator-controller-manager-58945d69c-647dc" not found
++ echo ''
++ echo '#'
++ echo '# Operand Pods'
++ echo '#'
++ echo ''
++ echo 'Get the Pods in nvidia-network-operator (status)'
++ kubectl get pods -owide -n nvidia-network-operator
++ echo 'Get the Pods in nvidia-network-operator (yaml)'
++ kubectl get pods -oyaml -n nvidia-network-operator
++ echo 'Get the Network Operator Pods Images'
++ kubectl get pods -n nvidia-network-operator '-o=jsonpath={range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{" "}{end}{end}'
++ echo 'Get the description and logs of the Network  Operator Pods'
+++ kubectl get pods -n nvidia-network-operator -oname
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/mofed-rhcos4.18-554bdbd7cf-ds-d4dv8 -n nvidia-network-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|network)'
+++ echo pod/mofed-rhcos4.18-554bdbd7cf-ds-d4dv8
+++ cut -d/ -f2
++ pod_name=mofed-rhcos4.18-554bdbd7cf-ds-d4dv8
++ '[' pod/mofed-rhcos4.18-554bdbd7cf-ds-d4dv8 == pod/nvidia-network-operator-controller-manager-58945d69c-647dc ']'
++ kubectl logs pod/mofed-rhcos4.18-554bdbd7cf-ds-d4dv8 -n nvidia-network-operator --all-containers --prefix
++ kubectl logs pod/mofed-rhcos4.18-554bdbd7cf-ds-d4dv8 -n nvidia-network-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "network-operator-init-container" in pod "mofed-rhcos4.18-554bdbd7cf-ds-d4dv8" not found
++ kubectl describe pod/mofed-rhcos4.18-554bdbd7cf-ds-d4dv8 -n nvidia-network-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-network-operator-controller-manager-58945d69c-647dc -n nvidia-network-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|network)'
+++ echo pod/nvidia-network-operator-controller-manager-58945d69c-647dc
+++ cut -d/ -f2
++ pod_name=nvidia-network-operator-controller-manager-58945d69c-647dc
++ '[' pod/nvidia-network-operator-controller-manager-58945d69c-647dc == pod/nvidia-network-operator-controller-manager-58945d69c-647dc ']'
++ echo 'Skipping operator pod nvidia-network-operator-controller-manager-58945d69c-647dc ...'
++ continue
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/rdma-shared-dp-ds-n2mx6 -n nvidia-network-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|network)'
++ echo 'Skipping pod/rdma-shared-dp-ds-n2mx6, not a NVIDA/network Pod ...'
++ continue
++ echo ''
++ echo '#'
++ echo '# Operand DaemonSets'
++ echo '#'
++ echo ''
++ echo 'Get the DaemonSets in nvidia-network-operator (status)'
++ kubectl get ds -n nvidia-network-operator
++ echo 'Get the DaemonSets in nvidia-network-operator (yaml)'
++ kubectl get ds -oyaml -n nvidia-network-operator
++ echo 'Get the description of the network Operator DaemonSets'
+++ kubectl get ds -n nvidia-network-operator -oname
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/mofed-rhcos4.18-554bdbd7cf-ds -n nvidia-network-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|network)'
++ kubectl describe daemonset.apps/mofed-rhcos4.18-554bdbd7cf-ds -n nvidia-network-operator
+++ echo daemonset.apps/mofed-rhcos4.18-554bdbd7cf-ds
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/rdma-shared-dp-ds -n nvidia-network-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|network)'
++ kubectl describe daemonset.apps/rdma-shared-dp-ds -n nvidia-network-operator
+++ echo daemonset.apps/rdma-shared-dp-ds
+++ cut -d/ -f2
++ echo ''
++ echo '#'
++ echo '# nvidia-bug-report.sh'
++ echo '#'
++ echo ''
+++ kubectl get pods -lopenshift.driver-toolkit -oname -n nvidia-network-operator
+++ kubectl get pods -lapp=nvidia-driver-daemonset -oname -n nvidia-network-operator
+++ kubectl get pods -lapp=nvidia-vgpu-manager-daemonset -oname -n nvidia-network-operator
++ echo ''
++ echo '#'
++ echo '# All done!'
++ [[ ./network-operator-mustgather.sh != \/\u\s\r\/\b\i\n\/\g\a\t\h\e\r ]]
++ echo '# Logs saved into /tmp/nvidia-network-operator_20251124_0542.'
++ echo '#'
