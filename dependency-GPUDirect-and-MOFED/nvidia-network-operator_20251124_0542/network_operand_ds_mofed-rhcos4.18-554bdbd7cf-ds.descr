@@ -1,0 +1,136 @@
+Name:           mofed-rhcos4.18-554bdbd7cf-ds
+Selector:       app=mofed-rhcos4.18-554bdbd7cf
+Node-Selector:  feature.node.kubernetes.io/kernel-version.full=5.14.0-427.96.1.el9_4.aarch64_64k,feature.node.kubernetes.io/pci-15b3.present=true,feature.node.kubernetes.io/system-os_release.ID=rhcos,feature.node.kubernetes.io/system-os_release.OSTREE_VERSION=418.94.202510230424-0,feature.node.kubernetes.io/system-os_release.VERSION_ID=4.18
+Labels:         app=mofed-rhcos4.18-554bdbd7cf
+                mofed-ds-format-version=1
+                nvidia.com/ofed-driver=
+                nvidia.network-operator.state=state-OFED
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.network-operator.revision: 1835718431
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 1
+Number of Nodes Misscheduled: 0
+Pods Status:  1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=mofed-rhcos4.18-554bdbd7cf
+                    kernel=5.14.0-427.96.1.el9_4.aarch64_64k
+                    nvidia.com/ofed-driver=
+  Service Account:  ofed-driver
+  Init Containers:
+   network-operator-init-container:
+    Image:      nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+    Port:       <none>
+    Host Port:  <none>
+    Args:
+      --node-name
+      $(NODE_NAME)
+      --configmap-name
+      ofed-init-container-config
+      --configmap-namespace
+      nvidia-network-operator
+      --configmap-key
+      config.json
+    Environment:
+      NODE_NAME:   (v1:spec.nodeName)
+    Mounts:       <none>
+  Containers:
+   mofed-container:
+    Image:      registry-arm.slcm.partner.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64
+    Port:       <none>
+    Host Port:  <none>
+    Liveness:   exec [sh -c lsmod | grep mlx5_core] delay=30s timeout=10s period=30s #success=1 #failure=1
+    Readiness:  exec [sh -c lsmod | grep mlx5_core] delay=10s timeout=10s period=30s #success=1 #failure=1
+    Startup:    exec [sh -c ls /run/mellanox/drivers/.driver-ready] delay=10s timeout=10s period=10s #success=1 #failure=60
+    Environment:
+      DTK_OCP_DRIVER_BUILD:               true
+      DTK_OCP_NIC_SHARED_DIR:             /mnt/shared-doca-driver-toolkit
+      CREATE_IFNAMES_UDEV:                true
+      NVIDIA_NIC_DRIVERS_INVENTORY_PATH:  /mnt/drivers-inventory
+    Mounts:
+      /etc/modprobe.d/ib_core.conf from host-ib-core (rw)
+      /etc/network from etc-network (rw)
+      /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem from ocp-network-operator-trusted-ca (ro,path="tls-ca-bundle.pem")
+      /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443 from arm-registry-config (ro,path="registry-arm.slcm.partner.lab..8443")
+      /host/etc from host-etc (rw)
+      /host/lib/modules from host-lib-modules (rw)
+      /host/lib/udev from host-udev (rw)
+      /host/usr from host-usr (rw)
+      /mnt/drivers-inventory from drivers-inventory (rw)
+      /mnt/shared-doca-driver-toolkit from shared-doca-driver-toolkit (rw)
+      /run/mellanox/drivers from run-mlnx-ofed (rw)
+      /run/udev from host-run-udev (ro)
+   openshift-driver-toolkit-ctr:
+    Image:      quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:75798070ee8bba72891c1ef66858117d352b2b98a4072c4ce5e6424d03845930
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      bash
+      -xc
+    Args:
+      until [ -f /mnt/shared-doca-driver-toolkit/dtk_start_compile ]; do
+        echo Waiting for mofed-container container to prepare the shared directory
+        sleep 3
+      done
+      exec /mnt/shared-doca-driver-toolkit/dtk_nic_driver_build.sh
+      
+    Environment:
+      DTK_OCP_NIC_SHARED_DIR:             /mnt/shared-doca-driver-toolkit
+      CREATE_IFNAMES_UDEV:                true
+      NVIDIA_NIC_DRIVERS_INVENTORY_PATH:  /mnt/drivers-inventory
+    Mounts:
+      /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem from ocp-network-operator-trusted-ca (ro,path="tls-ca-bundle.pem")
+      /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443 from arm-registry-config (ro,path="registry-arm.slcm.partner.lab..8443")
+      /mnt/shared-doca-driver-toolkit from shared-doca-driver-toolkit (rw)
+  Volumes:
+   run-mlnx-ofed:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/mellanox/drivers
+    HostPathType:  
+   etc-network:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/network
+    HostPathType:  
+   host-etc:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc
+    HostPathType:  
+   host-usr:
+    Type:          HostPath (bare host directory volume)
+    Path:          /usr
+    HostPathType:  
+   host-udev:
+    Type:          HostPath (bare host directory volume)
+    Path:          /lib/udev
+    HostPathType:  
+   host-run-udev:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/udev
+    HostPathType:  
+   host-lib-modules:
+    Type:          HostPath (bare host directory volume)
+    Path:          /lib/modules
+    HostPathType:  
+   drivers-inventory:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/opt/mofed-container/inventory
+    HostPathType:  DirectoryOrCreate
+   host-ib-core:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/modprobe.d/ib_core.conf
+    HostPathType:  FileOrCreate
+   ocp-network-operator-trusted-ca:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      ocp-network-operator-trusted-ca
+    Optional:  false
+   arm-registry-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      arm-registry-config
+    Optional:  false
+   shared-doca-driver-toolkit:
+    Type:               EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:             
+    SizeLimit:          <unset>
+  Priority Class Name:  system-node-critical
+Events:                 <none>

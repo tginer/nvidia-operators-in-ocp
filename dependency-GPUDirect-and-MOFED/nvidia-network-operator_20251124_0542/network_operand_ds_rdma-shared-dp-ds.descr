@@ -1,0 +1,59 @@
+Name:           rdma-shared-dp-ds
+Selector:       app=rdma-shared-dp
+Node-Selector:  feature.node.kubernetes.io/pci-15b3.present=true,network.nvidia.com/operator.mofed.wait=false
+Labels:         nvidia.network-operator.state=state-RDMA-device-plugin
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.network-operator.revision: 3705805267
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 1
+Number of Nodes Misscheduled: 0
+Pods Status:  1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=rdma-shared-dp
+  Service Account:  rdma-shared
+  Init Containers:
+   ofed-driver-validation:
+    Image:      ghcr.io/mellanox/k8s-rdma-shared-dev-plugin:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      until lsmod | grep mlx5_core; do echo waiting for OFED drivers to be loaded; sleep 30; done
+    Environment:  <none>
+    Mounts:       <none>
+  Containers:
+   rdma-shared-dp:
+    Image:      ghcr.io/mellanox/k8s-rdma-shared-dev-plugin:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/k8s-rdma-shared-dp
+    Environment:  <none>
+    Mounts:
+      /dev/ from devs (rw)
+      /k8s-rdma-shared-dev-plugin from config (rw)
+      /var/lib/kubelet/device-plugins from device-plugin (rw)
+      /var/lib/kubelet/plugins_registry from plugins-registry (rw)
+  Volumes:
+   device-plugin:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/lib/kubelet/device-plugins
+    HostPathType:  
+   plugins-registry:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/lib/kubelet/plugins_registry
+    HostPathType:  
+   config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      rdma-devices
+    Optional:  false
+   devs:
+    Type:               HostPath (bare host directory volume)
+    Path:               /dev/
+    HostPathType:       
+  Priority Class Name:  system-node-critical
+Events:                 <none>

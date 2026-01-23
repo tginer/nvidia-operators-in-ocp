@@ -1,0 +1,2 @@
+NAME                                                         READY   STATUS    RESTARTS   AGE     IP            NODE      NOMINATED NODE   READINESS GATES
+nvidia-network-operator-controller-manager-58945d69c-647dc   1/1     Running   6          3d18h   10.254.0.55   sno-arm   <none>           <none>

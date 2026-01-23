@@ -1,0 +1,127 @@
+apiVersion: config.openshift.io/v1
+kind: ClusterVersion
+metadata:
+  creationTimestamp: "2025-11-19T14:57:03Z"
+  generation: 3
+  name: version
+  resourceVersion: "451642"
+  uid: 9edf9c64-f73d-40f9-9431-11490369ae7e
+spec:
+  capabilities:
+    additionalEnabledCapabilities:
+    - marketplace
+    - NodeTuning
+    - OperatorLifecycleManager
+    - Ingress
+    baselineCapabilitySet: None
+  channel: stable-4.18
+  clusterID: eb45515e-1793-49e9-92fc-b9c1de8d88a3
+  desiredUpdate:
+    force: false
+    image: registry-arm.slcm.partner.lab:8443/openshift/release-images@sha256:edcedfff11a2f0a1dead9d818b3ee6cfd0d152c23537ca703237d40c007ac207
+    version: 4.18.27
+  upstream: https://api.openshift.com/api/upgrades_info/v1/graph
+status:
+  availableUpdates:
+  - channels:
+    - candidate-4.18
+    - candidate-4.19
+    - candidate-4.20
+    - eus-4.18
+    - fast-4.18
+    - fast-4.19
+    - stable-4.18
+    - stable-4.19
+    image: quay.io/openshift-release-dev/ocp-release@sha256:876d292e2e54e4cee4b03de0867fc92a73b9fba09f133645ca9f63766032f82f
+    url: https://access.redhat.com/errata/RHBA-2025:19865
+    version: 4.18.28
+  capabilities:
+    enabledCapabilities:
+    - Ingress
+    - NodeTuning
+    - OperatorLifecycleManager
+    - marketplace
+    knownCapabilities:
+    - Build
+    - CSISnapshot
+    - CloudControllerManager
+    - CloudCredential
+    - Console
+    - DeploymentConfig
+    - ImageRegistry
+    - Ingress
+    - Insights
+    - MachineAPI
+    - NodeTuning
+    - OperatorLifecycleManager
+    - OperatorLifecycleManagerV1
+    - Storage
+    - baremetal
+    - marketplace
+    - openshift-samples
+  conditions:
+  - lastTransitionTime: "2025-11-20T16:21:20Z"
+    status: "True"
+    type: RetrievedUpdates
+  - lastTransitionTime: "2025-11-19T14:57:45Z"
+    message: Kubernetes 1.32 and therefore OpenShift 4.19 remove several APIs which
+      require admin consideration. Please see the knowledge article https://access.redhat.com/articles/7112216
+      for details and instructions. This cluster has at least one aarch64 node. Please
+      ensure boot images are not too old by following KCS https://access.redhat.com/solutions/7119697
+      prior to upgrading to 4.19.
+    reason: AdminAckRequired
+    status: "False"
+    type: Upgradeable
+  - lastTransitionTime: "2025-11-19T14:57:45Z"
+    message: Capabilities match configured spec
+    reason: AsExpected
+    status: "False"
+    type: ImplicitlyEnabledCapabilities
+  - lastTransitionTime: "2025-11-19T14:57:45Z"
+    message: Payload loaded version="4.18.27" image="registry-arm.slcm.partner.lab:8443/openshift/release-images@sha256:edcedfff11a2f0a1dead9d818b3ee6cfd0d152c23537ca703237d40c007ac207"
+      architecture="Multi"
+    reason: PayloadLoaded
+    status: "True"
+    type: ReleaseAccepted
+  - lastTransitionTime: "2025-11-19T15:27:19Z"
+    message: Done applying 4.18.27
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2025-11-21T11:33:04Z"
+    status: "False"
+    type: Failing
+  - lastTransitionTime: "2025-11-21T11:55:44Z"
+    message: Cluster version is 4.18.27
+    status: "False"
+    type: Progressing
+  desired:
+    channels:
+    - candidate-4.18
+    - candidate-4.19
+    - candidate-4.20
+    - eus-4.18
+    - eus-4.20
+    - fast-4.18
+    - fast-4.19
+    - fast-4.20
+    - stable-4.18
+    - stable-4.19
+    - stable-4.20
+    image: registry-arm.slcm.partner.lab:8443/openshift/release-images@sha256:edcedfff11a2f0a1dead9d818b3ee6cfd0d152c23537ca703237d40c007ac207
+    url: https://access.redhat.com/errata/RHSA-2025:19047
+    version: 4.18.27
+  history:
+  - completionTime: "2025-11-21T11:55:44Z"
+    image: registry-arm.slcm.partner.lab:8443/openshift/release-images@sha256:edcedfff11a2f0a1dead9d818b3ee6cfd0d152c23537ca703237d40c007ac207
+    startedTime: "2025-11-21T11:10:41Z"
+    state: Completed
+    verified: true
+    version: 4.18.27
+  - completionTime: "2025-11-19T15:27:19Z"
+    image: quay.io/openshift-release-dev/ocp-release@sha256:09747ced7511aedd50ec9457c8e6a636e1f09d75fe7a676de7abfb031169c080
+    startedTime: "2025-11-19T14:57:45Z"
+    state: Completed
+    verified: false
+    version: 4.18.24
+  observedGeneration: 3
+  versionHash: d1k4hQ4Tf0U=

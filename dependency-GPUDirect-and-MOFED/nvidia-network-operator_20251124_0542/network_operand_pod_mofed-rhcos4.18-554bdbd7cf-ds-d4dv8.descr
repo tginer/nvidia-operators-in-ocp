@@ -1,0 +1,186 @@
+Name:                 mofed-rhcos4.18-554bdbd7cf-ds-d4dv8
+Namespace:            nvidia-network-operator
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Service Account:      ofed-driver
+Node:                 sno-arm/192.168.44.65
+Start Time:           Fri, 21 Nov 2025 06:51:05 -0500
+Labels:               app=mofed-rhcos4.18-554bdbd7cf
+                      controller-revision-hash=bddcbf449
+                      kernel=5.14.0-427.96.1.el9_4.aarch64_64k
+                      nvidia.com/ofed-driver=
+                      pod-template-generation=1
+Annotations:          openshift.io/scc: privileged
+Status:               Running
+IP:                   192.168.44.65
+IPs:
+  IP:           192.168.44.65
+Controlled By:  DaemonSet/mofed-rhcos4.18-554bdbd7cf-ds
+Init Containers:
+  network-operator-init-container:
+    Container ID:  cri-o://fc9af34eeedd442fe760c58d25568b86662d31731689468e85afe0301e0615ce
+    Image:         nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+    Image ID:      nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      --node-name
+      $(NODE_NAME)
+      --configmap-name
+      ofed-init-container-config
+      --configmap-namespace
+      nvidia-network-operator
+      --configmap-key
+      config.json
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 21 Nov 2025 06:51:05 -0500
+      Finished:     Fri, 21 Nov 2025 06:51:05 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NODE_NAME:   (v1:spec.nodeName)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-x9bw4 (ro)
+Containers:
+  mofed-container:
+    Container ID:   cri-o://1398c95d0a88d3c5f11340f96cbd2db9fddf924c67e8662bdb3b626dbbe225f1
+    Image:          registry-arm.slcm.partner.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64
+    Image ID:       registry-arm.slcm.partner.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container@sha256:d41eea65b102dc5bb5792871ae212b59a65dae492ca109c52138d5626eba1ffd
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Fri, 21 Nov 2025 06:51:06 -0500
+    Ready:          True
+    Restart Count:  0
+    Liveness:       exec [sh -c lsmod | grep mlx5_core] delay=30s timeout=10s period=30s #success=1 #failure=1
+    Readiness:      exec [sh -c lsmod | grep mlx5_core] delay=10s timeout=10s period=30s #success=1 #failure=1
+    Startup:        exec [sh -c ls /run/mellanox/drivers/.driver-ready] delay=10s timeout=10s period=10s #success=1 #failure=60
+    Environment:
+      DTK_OCP_DRIVER_BUILD:               true
+      DTK_OCP_NIC_SHARED_DIR:             /mnt/shared-doca-driver-toolkit
+      CREATE_IFNAMES_UDEV:                true
+      NVIDIA_NIC_DRIVERS_INVENTORY_PATH:  /mnt/drivers-inventory
+    Mounts:
+      /etc/modprobe.d/ib_core.conf from host-ib-core (rw)
+      /etc/network from etc-network (rw)
+      /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem from ocp-network-operator-trusted-ca (ro,path="tls-ca-bundle.pem")
+      /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443 from arm-registry-config (ro,path="registry-arm.slcm.partner.lab..8443")
+      /host/etc from host-etc (rw)
+      /host/lib/modules from host-lib-modules (rw)
+      /host/lib/udev from host-udev (rw)
+      /host/usr from host-usr (rw)
+      /mnt/drivers-inventory from drivers-inventory (rw)
+      /mnt/shared-doca-driver-toolkit from shared-doca-driver-toolkit (rw)
+      /run/mellanox/drivers from run-mlnx-ofed (rw)
+      /run/udev from host-run-udev (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-x9bw4 (ro)
+  openshift-driver-toolkit-ctr:
+    Container ID:  cri-o://e04b9b947d078e6720d1eb2b2dd041be2da7e119c6cf8ba417b6008e68fd4042
+    Image:         quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:75798070ee8bba72891c1ef66858117d352b2b98a4072c4ce5e6424d03845930
+    Image ID:      quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:470966c00cb3258fa78d122ed19971a385539435801ab7eb1ea133d173a9f8b7
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      bash
+      -xc
+    Args:
+      until [ -f /mnt/shared-doca-driver-toolkit/dtk_start_compile ]; do
+        echo Waiting for mofed-container container to prepare the shared directory
+        sleep 3
+      done
+      exec /mnt/shared-doca-driver-toolkit/dtk_nic_driver_build.sh
+      
+    State:          Running
+      Started:      Fri, 21 Nov 2025 06:51:13 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      DTK_OCP_NIC_SHARED_DIR:             /mnt/shared-doca-driver-toolkit
+      CREATE_IFNAMES_UDEV:                true
+      NVIDIA_NIC_DRIVERS_INVENTORY_PATH:  /mnt/drivers-inventory
+    Mounts:
+      /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem from ocp-network-operator-trusted-ca (ro,path="tls-ca-bundle.pem")
+      /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443 from arm-registry-config (ro,path="registry-arm.slcm.partner.lab..8443")
+      /mnt/shared-doca-driver-toolkit from shared-doca-driver-toolkit (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-x9bw4 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  run-mlnx-ofed:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/mellanox/drivers
+    HostPathType:  
+  etc-network:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/network
+    HostPathType:  
+  host-etc:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc
+    HostPathType:  
+  host-usr:
+    Type:          HostPath (bare host directory volume)
+    Path:          /usr
+    HostPathType:  
+  host-udev:
+    Type:          HostPath (bare host directory volume)
+    Path:          /lib/udev
+    HostPathType:  
+  host-run-udev:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/udev
+    HostPathType:  
+  host-lib-modules:
+    Type:          HostPath (bare host directory volume)
+    Path:          /lib/modules
+    HostPathType:  
+  drivers-inventory:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/opt/mofed-container/inventory
+    HostPathType:  DirectoryOrCreate
+  host-ib-core:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/modprobe.d/ib_core.conf
+    HostPathType:  FileOrCreate
+  ocp-network-operator-trusted-ca:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      ocp-network-operator-trusted-ca
+    Optional:  false
+  arm-registry-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      arm-registry-config
+    Optional:  false
+  shared-doca-driver-toolkit:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-x9bw4:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+    ConfigMapName:           openshift-service-ca.crt
+    ConfigMapOptional:       <nil>
+QoS Class:                   BestEffort
+Node-Selectors:              feature.node.kubernetes.io/kernel-version.full=5.14.0-427.96.1.el9_4.aarch64_64k
+                             feature.node.kubernetes.io/pci-15b3.present=true
+                             feature.node.kubernetes.io/system-os_release.ID=rhcos
+                             feature.node.kubernetes.io/system-os_release.OSTREE_VERSION=418.94.202510230424-0
+                             feature.node.kubernetes.io/system-os_release.VERSION_ID=4.18
+Tolerations:                 node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+                             nvidia.com/gpu:NoSchedule op=Exists
+Events:                      <none>

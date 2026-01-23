@@ -1,0 +1,300 @@
+Name:               sno-arm
+Roles:              control-plane,master,worker
+Labels:             beta.kubernetes.io/arch=arm64
+                    beta.kubernetes.io/os=linux
+                    feature.node.kubernetes.io/cpu-cpuid.AES=true
+                    feature.node.kubernetes.io/cpu-cpuid.ASIMD=true
+                    feature.node.kubernetes.io/cpu-cpuid.ASIMDDP=true
+                    feature.node.kubernetes.io/cpu-cpuid.ASIMDFHM=true
+                    feature.node.kubernetes.io/cpu-cpuid.ASIMDHP=true
+                    feature.node.kubernetes.io/cpu-cpuid.ASIMDRDM=true
+                    feature.node.kubernetes.io/cpu-cpuid.ATOMICS=true
+                    feature.node.kubernetes.io/cpu-cpuid.BF16=true
+                    feature.node.kubernetes.io/cpu-cpuid.CPUID=true
+                    feature.node.kubernetes.io/cpu-cpuid.CRC32=true
+                    feature.node.kubernetes.io/cpu-cpuid.DCPODP=true
+                    feature.node.kubernetes.io/cpu-cpuid.DCPOP=true
+                    feature.node.kubernetes.io/cpu-cpuid.DGH=true
+                    feature.node.kubernetes.io/cpu-cpuid.DIT=true
+                    feature.node.kubernetes.io/cpu-cpuid.EVTSTRM=true
+                    feature.node.kubernetes.io/cpu-cpuid.FCMA=true
+                    feature.node.kubernetes.io/cpu-cpuid.FLAGM=true
+                    feature.node.kubernetes.io/cpu-cpuid.FLAGM2=true
+                    feature.node.kubernetes.io/cpu-cpuid.FP=true
+                    feature.node.kubernetes.io/cpu-cpuid.FPHP=true
+                    feature.node.kubernetes.io/cpu-cpuid.FRINT=true
+                    feature.node.kubernetes.io/cpu-cpuid.I8MM=true
+                    feature.node.kubernetes.io/cpu-cpuid.ILRCPC=true
+                    feature.node.kubernetes.io/cpu-cpuid.JSCVT=true
+                    feature.node.kubernetes.io/cpu-cpuid.LRCPC=true
+                    feature.node.kubernetes.io/cpu-cpuid.PMULL=true
+                    feature.node.kubernetes.io/cpu-cpuid.SB=true
+                    feature.node.kubernetes.io/cpu-cpuid.SHA1=true
+                    feature.node.kubernetes.io/cpu-cpuid.SHA2=true
+                    feature.node.kubernetes.io/cpu-cpuid.SHA3=true
+                    feature.node.kubernetes.io/cpu-cpuid.SHA512=true
+                    feature.node.kubernetes.io/cpu-cpuid.SM3=true
+                    feature.node.kubernetes.io/cpu-cpuid.SM4=true
+                    feature.node.kubernetes.io/cpu-cpuid.SSBS=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVE=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVE2=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVEAES=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVEBF16=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVEBITPERM=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVEI8MM=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVEPMULL=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVESHA3=true
+                    feature.node.kubernetes.io/cpu-cpuid.SVESM4=true
+                    feature.node.kubernetes.io/cpu-cpuid.USCAT=true
+                    feature.node.kubernetes.io/cpu-hardware_multithreading=false
+                    feature.node.kubernetes.io/cpu-model.family=15
+                    feature.node.kubernetes.io/cpu-model.id=54512
+                    feature.node.kubernetes.io/cpu-model.vendor_id=ARM
+                    feature.node.kubernetes.io/kernel-config.NO_HZ=true
+                    feature.node.kubernetes.io/kernel-config.NO_HZ_FULL=true
+                    feature.node.kubernetes.io/kernel-selinux.enabled=true
+                    feature.node.kubernetes.io/kernel-version.full=5.14.0-427.96.1.el9_4.aarch64_64k
+                    feature.node.kubernetes.io/kernel-version.major=5
+                    feature.node.kubernetes.io/kernel-version.minor=14
+                    feature.node.kubernetes.io/kernel-version.revision=0
+                    feature.node.kubernetes.io/memory-numa=true
+                    feature.node.kubernetes.io/network-sriov.capable=true
+                    feature.node.kubernetes.io/network-sriov.configured=true
+                    feature.node.kubernetes.io/pci-10de.present=true
+                    feature.node.kubernetes.io/pci-10de.sriov.capable=true
+                    feature.node.kubernetes.io/pci-15b3.present=true
+                    feature.node.kubernetes.io/pci-15b3.sriov.capable=true
+                    feature.node.kubernetes.io/pci-1a03.present=true
+                    feature.node.kubernetes.io/rdma.available=true
+                    feature.node.kubernetes.io/rdma.capable=true
+                    feature.node.kubernetes.io/storage-nonrotationaldisk=true
+                    feature.node.kubernetes.io/system-os_release.ID=rhcos
+                    feature.node.kubernetes.io/system-os_release.OPENSHIFT_VERSION=4.18
+                    feature.node.kubernetes.io/system-os_release.OSTREE_VERSION=418.94.202510230424-0
+                    feature.node.kubernetes.io/system-os_release.RHEL_VERSION=9.4
+                    feature.node.kubernetes.io/system-os_release.VERSION_ID=4.18
+                    feature.node.kubernetes.io/system-os_release.VERSION_ID.major=4
+                    feature.node.kubernetes.io/system-os_release.VERSION_ID.minor=18
+                    feature.node.kubernetes.io/usb-ef_0b1f_03ee.present=true
+                    kubernetes.io/arch=arm64
+                    kubernetes.io/hostname=sno-arm
+                    kubernetes.io/os=linux
+                    network.nvidia.com/operator.mofed.wait=false
+                    node-role.kubernetes.io/control-plane=
+                    node-role.kubernetes.io/master=
+                    node-role.kubernetes.io/worker=
+                    node.openshift.io/os_id=rhcos
+                    nvidia.com/gpu-driver-upgrade-state=upgrade-done
+                    nvidia.com/gpu.deploy.container-toolkit=true
+                    nvidia.com/gpu.deploy.dcgm=true
+                    nvidia.com/gpu.deploy.dcgm-exporter=true
+                    nvidia.com/gpu.deploy.device-plugin=true
+                    nvidia.com/gpu.deploy.driver=true
+                    nvidia.com/gpu.deploy.gpu-feature-discovery=true
+                    nvidia.com/gpu.deploy.mig-manager=true
+                    nvidia.com/gpu.deploy.node-status-exporter=true
+                    nvidia.com/gpu.deploy.nvsm=true
+                    nvidia.com/gpu.deploy.operator-validator=true
+                    nvidia.com/gpu.present=true
+                    nvidia.com/mig.config=all-disabled
+                    nvidia.com/mig.config.state=success
+                    sriovnetwork.openshift.io/device-plugin=Enabled
+                    topology.topolvm.io/node=sno-arm
+Annotations:        capacity.topolvm.io/00default: 8633261752320
+                    capacity.topolvm.io/vg1: 8633261752320
+                    csi.volume.kubernetes.io/nodeid: {"topolvm.io":"sno-arm"}
+                    k8s.ovn.org/host-cidrs: ["192.168.44.65/25"]
+                    k8s.ovn.org/l3-gateway-config:
+                      {"default":{"mode":"shared","bridge-id":"br-ex","interface-id":"br-ex_sno-arm","mac-address":"b8:e9:24:0a:ba:30","ip-addresses":["192.168....
+                    k8s.ovn.org/node-chassis-id: c1c48e9c-24fa-4597-9e28-d26c4111b267
+                    k8s.ovn.org/node-encap-ips: ["192.168.44.65"]
+                    k8s.ovn.org/node-id: 2
+                    k8s.ovn.org/node-masquerade-subnet: {"ipv4":"169.254.0.0/17","ipv6":"fd69::/112"}
+                    k8s.ovn.org/node-primary-ifaddr: {"ipv4":"192.168.44.65/25"}
+                    k8s.ovn.org/node-subnets: {"default":["10.254.0.0/23"]}
+                    k8s.ovn.org/node-transit-switch-port-ifaddr: {"ipv4":"100.88.0.2/16"}
+                    k8s.ovn.org/remote-zone-migrated: sno-arm
+                    k8s.ovn.org/zone-name: sno-arm
+                    machineconfiguration.openshift.io/controlPlaneTopology: SingleReplica
+                    machineconfiguration.openshift.io/currentConfig: rendered-master-c1811a20d090fa5d4baffb873a1a2f88
+                    machineconfiguration.openshift.io/desiredConfig: rendered-master-c1811a20d090fa5d4baffb873a1a2f88
+                    machineconfiguration.openshift.io/desiredDrain: uncordon-rendered-master-c1811a20d090fa5d4baffb873a1a2f88
+                    machineconfiguration.openshift.io/lastAppliedDrain: uncordon-rendered-master-c1811a20d090fa5d4baffb873a1a2f88
+                    machineconfiguration.openshift.io/lastObservedServerCAAnnotation: false
+                    machineconfiguration.openshift.io/lastSyncedControllerConfigResourceVersion: 447131
+                    machineconfiguration.openshift.io/post-config-action: 
+                    machineconfiguration.openshift.io/reason: 
+                    machineconfiguration.openshift.io/state: Done
+                    nfd.node.kubernetes.io/feature-labels:
+                      cpu-cpuid.AES,cpu-cpuid.ASIMD,cpu-cpuid.ASIMDDP,cpu-cpuid.ASIMDFHM,cpu-cpuid.ASIMDHP,cpu-cpuid.ASIMDRDM,cpu-cpuid.ATOMICS,cpu-cpuid.BF16,c...
+                    nvidia.com/gpu-driver-upgrade-enabled: true
+                    sriovnetwork.openshift.io/current-state: Idle
+                    sriovnetwork.openshift.io/state: Idle
+                    tuned.openshift.io/bootcmdline:
+                      skew_tick=1 rcupdate.rcu_normal_after_boot=1 rcutree.nohz_full_patience_delay=1000 nohz=on rcu_nocbs=4-67 tuned.non_isolcpus=000000f0,0000...
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Wed, 19 Nov 2025 10:10:56 -0500
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  sno-arm
+  AcquireTime:     <unset>
+  RenewTime:       Fri, 21 Nov 2025 10:19:45 -0500
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Fri, 21 Nov 2025 10:19:44 -0500   Wed, 19 Nov 2025 10:10:56 -0500   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Fri, 21 Nov 2025 10:19:44 -0500   Wed, 19 Nov 2025 10:10:56 -0500   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Fri, 21 Nov 2025 10:19:44 -0500   Wed, 19 Nov 2025 10:10:56 -0500   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Fri, 21 Nov 2025 10:19:44 -0500   Fri, 21 Nov 2025 06:49:01 -0500   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  192.168.44.65
+  Hostname:    sno-arm
+Capacity:
+  cpu:                                     72
+  ephemeral-storage:                       249936Mi
+  hugepages-16Gi:                          0
+  hugepages-2Mi:                           0
+  hugepages-512Mi:                         16Gi
+  management.workload.openshift.io/cores:  72k
+  memory:                                  500684416Ki
+  nvidia.com/gpu:                          0
+  openshift.io/sriov_netdevice_0:          30
+  openshift.io/sriov_vfio_0:               20
+  pods:                                    250
+  rdma/rdmashared:                         1k
+Allocatable:
+  cpu:                                     64
+  ephemeral-storage:                       247899304560
+  hugepages-16Gi:                          0
+  hugepages-2Mi:                           0
+  hugepages-512Mi:                         16Gi
+  management.workload.openshift.io/cores:  72k
+  memory:                                  472704640Ki
+  nvidia.com/gpu:                          0
+  openshift.io/sriov_netdevice_0:          30
+  openshift.io/sriov_vfio_0:               20
+  pods:                                    250
+  rdma/rdmashared:                         1k
+System Info:
+  Machine ID:                                       9e39cb9a0aef4de89cdd0dc92d114db6
+  System UUID:                                      a25b0800-d713-11ef-8000-7cc25586c5b7
+  Boot ID:                                          ebc7fe57-a998-4b11-9c64-53b16d5df57a
+  Kernel Version:                                   5.14.0-427.96.1.el9_4.aarch64+64k
+  OS Image:                                         Red Hat Enterprise Linux CoreOS 418.94.202510230424-0
+  Operating System:                                 linux
+  Architecture:                                     arm64
+  Container Runtime Version:                        cri-o://1.31.13-2.rhaos4.18.git15789b8.el9
+  Kubelet Version:                                  v1.31.13
+  Kube-Proxy Version:                               v1.31.13
+Non-terminated Pods:                                (92 in total)
+  Namespace                                         Name                                                          CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                                         ----                                                          ------------  ----------  ---------------  -------------  ---
+  nvidia-gpu-operator                               gpu-feature-discovery-hnr8w                                   0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h28m
+  nvidia-gpu-operator                               gpu-operator-54d498cdbc-f2lft                                 200m (0%)     500m (0%)   200Mi (0%)       1Gi (0%)       6h28m
+  nvidia-gpu-operator                               nvidia-container-toolkit-daemonset-sxfkr                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h28m
+  nvidia-gpu-operator                               nvidia-dcgm-exporter-n6jqs                                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h28m
+  nvidia-gpu-operator                               nvidia-dcgm-m25d9                                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h28m
+  nvidia-gpu-operator                               nvidia-device-plugin-daemonset-v46gq                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h28m
+  nvidia-gpu-operator                               nvidia-driver-daemonset-418.94.202510230424-0-564xm           0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h29m
+  nvidia-gpu-operator                               nvidia-mig-manager-w5799                                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h28m
+  nvidia-gpu-operator                               nvidia-node-status-exporter-cd78t                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         6h28m
+  nvidia-gpu-operator                               nvidia-operator-validator-6fhjb                               0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h28m
+  nvidia-network-operator                           mofed-rhcos4.18-554bdbd7cf-ds-d4dv8                           0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h30m
+  nvidia-network-operator                           nvidia-network-operator-controller-manager-58945d69c-647dc    5m (0%)       500m (0%)   64Mi (0%)        256Mi (0%)     22h
+  nvidia-network-operator                           rdma-shared-dp-ds-n2mx6                                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         3h21m
+  open-cluster-management-agent-addon               cluster-proxy-proxy-agent-54d6559c6b-kpv5m                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         28h
+  open-cluster-management-agent-addon               config-policy-controller-65744fc884-2prnf                     0 (0%)        0 (0%)      128Mi (0%)       512Mi (0%)     47h
+  open-cluster-management-agent-addon               governance-policy-framework-7574bfd7fd-6lgdz                  0 (0%)        0 (0%)      64Mi (0%)        512Mi (0%)     47h
+  open-cluster-management-agent-addon               klusterlet-addon-workmgr-bbfb6dc8c-fbjwt                      0 (0%)        0 (0%)      128Mi (0%)       512Mi (0%)     47h
+  open-cluster-management-agent-addon               managed-serviceaccount-addon-agent-77cd558dc4-hjd22           0 (0%)        0 (0%)      0 (0%)           0 (0%)         47h
+  open-cluster-management-agent                     klusterlet-6b5cb6d58b-958hv                                   0 (0%)        0 (0%)      64Mi (0%)        2Gi (0%)       47h
+  open-cluster-management-agent                     klusterlet-agent-59f56f7d57-pn868                             0 (0%)        0 (0%)      16Mi (0%)        0 (0%)         47h
+  openshift-apiserver-operator                      openshift-apiserver-operator-864b74f874-dd42k                 0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h50m
+  openshift-apiserver                               apiserver-78ccfbdb77-lw9xv                                    0 (0%)        0 (0%)      250Mi (0%)       0 (0%)         3h50m
+  openshift-authentication-operator                 authentication-operator-57cf477fd4-nddx2                      0 (0%)        0 (0%)      200Mi (0%)       0 (0%)         3h50m
+  openshift-authentication                          oauth-openshift-c449b6f7f-xj7hx                               0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h47m
+  openshift-cluster-machine-approver                machine-approver-6784fb94f8-5n2z6                             0 (0%)        0 (0%)      70Mi (0%)        0 (0%)         3h50m
+  openshift-cluster-node-tuning-operator            cluster-node-tuning-operator-6fd956954-w5wv8                  0 (0%)        0 (0%)      20Mi (0%)        0 (0%)         3h50m
+  openshift-cluster-node-tuning-operator            tuned-msljb                                                   0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h49m
+  openshift-cluster-version                         cluster-version-operator-5fddb65c94-pf62z                     0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         4h9m
+  openshift-config-operator                         openshift-config-operator-7f9cc6cff8-jlx95                    0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         4h9m
+  openshift-controller-manager-operator             openshift-controller-manager-operator-64957d5785-srfnv        0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h50m
+  openshift-controller-manager                      controller-manager-7959d6cd49-vhfnz                           0 (0%)        0 (0%)      100Mi (0%)       0 (0%)         3h49m
+  openshift-dns-operator                            dns-operator-7ffbfd47b6-jswwc                                 0 (0%)        0 (0%)      69Mi (0%)        0 (0%)         3h46m
+  openshift-dns                                     dns-default-jpnqj                                             0 (0%)        0 (0%)      110Mi (0%)       0 (0%)         3h46m
+  openshift-dns                                     node-resolver-hrs9f                                           0 (0%)        0 (0%)      21Mi (0%)        0 (0%)         3h46m
+  openshift-etcd-operator                           etcd-operator-564bd96785-g2vjs                                0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         4h8m
+  openshift-etcd                                    etcd-sno-arm                                                  0 (0%)        0 (0%)      960Mi (0%)       0 (0%)         4h1m
+  openshift-ingress-canary                          ingress-canary-vrkg2                                          0 (0%)        0 (0%)      20Mi (0%)        0 (0%)         3h50m
+  openshift-ingress-operator                        ingress-operator-7c74474875-xf7qv                             0 (0%)        0 (0%)      96Mi (0%)        0 (0%)         3h50m
+  openshift-ingress                                 router-default-658c498678-5qdgp                               0 (0%)        0 (0%)      256Mi (0%)       0 (0%)         3h50m
+  openshift-kube-apiserver-operator                 kube-apiserver-operator-58fc96cfdd-cg86x                      0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         4h8m
+  openshift-kube-apiserver                          kube-apiserver-sno-arm                                        0 (0%)        0 (0%)      1224Mi (0%)      0 (0%)         4h2m
+  openshift-kube-controller-manager-operator        kube-controller-manager-operator-684c87cbc7-sqh5l             0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h57m
+  openshift-kube-controller-manager                 kube-controller-manager-sno-arm                               0 (0%)        0 (0%)      500Mi (0%)       0 (0%)         3h50m
+  openshift-kube-scheduler-operator                 openshift-kube-scheduler-operator-74b547cdc6-8zhnk            0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h57m
+  openshift-kube-scheduler                          openshift-kube-scheduler-sno-arm                              0 (0%)        0 (0%)      150Mi (0%)       0 (0%)         3h54m
+  openshift-kube-storage-version-migrator-operator  kube-storage-version-migrator-operator-d777c6866-ln45s        0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h50m
+  openshift-kube-storage-version-migrator           migrator-866d78657c-gqq7z                                     0 (0%)        0 (0%)      201Mi (0%)       0 (0%)         3h50m
+  openshift-machine-config-operator                 kube-rbac-proxy-crio-sno-arm                                  0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h40m
+  openshift-machine-config-operator                 machine-config-controller-5df6df94dc-9frnj                    0 (0%)        0 (0%)      100Mi (0%)       0 (0%)         3h42m
+  openshift-machine-config-operator                 machine-config-daemon-pg4nr                                   0 (0%)        0 (0%)      100Mi (0%)       0 (0%)         3h42m
+  openshift-machine-config-operator                 machine-config-operator-7f5c6cf4b6-xrdbb                      0 (0%)        0 (0%)      100Mi (0%)       0 (0%)         3h42m
+  openshift-machine-config-operator                 machine-config-server-tw4lj                                   0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h40m
+  openshift-marketplace                             cs-redhat-certified-operator-index-qn2vw                      10m (0%)      0 (0%)      50Mi (0%)        0 (0%)         22h
+  openshift-marketplace                             cs-redhat-operator-index-k2mgb                                0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         23h
+  openshift-marketplace                             marketplace-operator-5c99454dbf-lg4rv                         0 (0%)        0 (0%)      5Mi (0%)         0 (0%)         3h50m
+  openshift-monitoring                              alertmanager-main-0                                           0 (0%)        0 (0%)      120Mi (0%)       0 (0%)         3h50m
+  openshift-monitoring                              cluster-monitoring-operator-59f4bb69c6-29gmf                  0 (0%)        0 (0%)      75Mi (0%)        0 (0%)         3h50m
+  openshift-monitoring                              kube-state-metrics-df4646cb9-npzhx                            0 (0%)        0 (0%)      110Mi (0%)       0 (0%)         3h50m
+  openshift-monitoring                              metrics-server-c89dd4cb6-7nwv8                                0 (0%)        0 (0%)      40Mi (0%)        0 (0%)         3h50m
+  openshift-monitoring                              node-exporter-zbr4n                                           0 (0%)        0 (0%)      47Mi (0%)        0 (0%)         3h50m
+  openshift-monitoring                              openshift-state-metrics-59698cdf44-t96nv                      0 (0%)        0 (0%)      72Mi (0%)        0 (0%)         3h50m
+  openshift-monitoring                              prometheus-k8s-0                                              0 (0%)        0 (0%)      1099Mi (0%)      0 (0%)         3h50m
+  openshift-monitoring                              prometheus-operator-7cff858f79-2hrs8                          0 (0%)        0 (0%)      165Mi (0%)       0 (0%)         3h50m
+  openshift-monitoring                              prometheus-operator-admission-webhook-c69675d89-j5rhv         0 (0%)        0 (0%)      30Mi (0%)        0 (0%)         3h50m
+  openshift-monitoring                              telemeter-client-55ff587684-tds2h                             0 (0%)        0 (0%)      70Mi (0%)        0 (0%)         3h50m
+  openshift-monitoring                              thanos-querier-689c489c7c-n2bjl                               0 (0%)        0 (0%)      87Mi (0%)        0 (0%)         3h50m
+  openshift-multus                                  multus-additional-cni-plugins-xd66d                           0 (0%)        0 (0%)      10Mi (0%)        0 (0%)         3h46m
+  openshift-multus                                  multus-admission-controller-584fd7ffcf-rt6zs                  0 (0%)        0 (0%)      70Mi (0%)        0 (0%)         3h46m
+  openshift-multus                                  multus-fzhrb                                                  0 (0%)        0 (0%)      65Mi (0%)        0 (0%)         3h46m
+  openshift-multus                                  network-metrics-daemon-hjgbw                                  0 (0%)        0 (0%)      120Mi (0%)       0 (0%)         3h46m
+  openshift-network-node-identity                   network-node-identity-jlv4d                                   0 (0%)        0 (0%)      100Mi (0%)       0 (0%)         3h46m
+  openshift-network-operator                        iptables-alerter-kspxz                                        0 (0%)        0 (0%)      65Mi (0%)        0 (0%)         3h46m
+  openshift-network-operator                        network-operator-757dcb7fb4-6m9bh                             0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h46m
+  openshift-nfd                                     nfd-controller-manager-7d985456c4-8lfvc                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         23h
+  openshift-nfd                                     nfd-gc-6f644996df-sq445                                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         27h
+  openshift-nfd                                     nfd-master-57fc94946d-bwwtz                                   0 (0%)        0 (0%)      0 (0%)           0 (0%)         27h
+  openshift-nfd                                     nfd-worker-p44pr                                              0 (0%)        0 (0%)      0 (0%)           0 (0%)         27h
+  openshift-oauth-apiserver                         apiserver-d5fc8887d-28wgz                                     0 (0%)        0 (0%)      200Mi (0%)       0 (0%)         3h49m
+  openshift-operator-lifecycle-manager              catalog-operator-58dfc7dc5b-h778x                             0 (0%)        0 (0%)      80Mi (0%)        0 (0%)         3h50m
+  openshift-operator-lifecycle-manager              olm-operator-588d6f6f85-l2mqs                                 0 (0%)        0 (0%)      160Mi (0%)       0 (0%)         3h50m
+  openshift-operator-lifecycle-manager              package-server-manager-759cc46f45-xkfw4                       0 (0%)        0 (0%)      30Mi (0%)        0 (0%)         3h50m
+  openshift-operator-lifecycle-manager              packageserver-84fb7cf749-xddp8                                0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h50m
+  openshift-ovn-kubernetes                          ovnkube-control-plane-7cbb797df-mqdtb                         0 (0%)        0 (0%)      320Mi (0%)       0 (0%)         3h42m
+  openshift-ovn-kubernetes                          ovnkube-node-5f9p6                                            0 (0%)        0 (0%)      1630Mi (0%)      0 (0%)         3h45m
+  openshift-route-controller-manager                route-controller-manager-8bd8f649-nh5tc                       0 (0%)        0 (0%)      100Mi (0%)       0 (0%)         3h49m
+  openshift-service-ca-operator                     service-ca-operator-6d6b587988-tjx5z                          0 (0%)        0 (0%)      80Mi (0%)        0 (0%)         3h50m
+  openshift-service-ca                              service-ca-85445c4dd9-nblhd                                   0 (0%)        0 (0%)      120Mi (0%)       0 (0%)         3h48m
+  openshift-sriov-network-operator                  sriov-device-plugin-rsr6z                                     0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         3h18m
+  openshift-sriov-network-operator                  sriov-network-config-daemon-r8qbt                             0 (0%)        0 (0%)      100Mi (0%)       0 (0%)         27h
+  openshift-sriov-network-operator                  sriov-network-operator-57cbf898d8-cqgvg                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         23h
+  openshift-storage                                 lvms-operator-66f7bd5dcd-gsv5s                                0 (0%)        0 (0%)      50Mi (0%)        0 (0%)         23h
+  openshift-storage                                 vg-manager-wshwb                                              0 (0%)        0 (0%)      45Mi (0%)        0 (0%)         23h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource                                Requests      Limits
+  --------                                --------      ------
+  cpu                                     215m (0%)     1 (1%)
+  memory                                  11376Mi (2%)  4864Mi (1%)
+  ephemeral-storage                       0 (0%)        0 (0%)
+  hugepages-16Gi                          0 (0%)        0 (0%)
+  hugepages-2Mi                           0 (0%)        0 (0%)
+  hugepages-512Mi                         0 (0%)        0 (0%)
+  management.workload.openshift.io/cores  2374          2374
+  nvidia.com/gpu                          0             0
+  openshift.io/sriov_netdevice_0          0             0
+  openshift.io/sriov_vfio_0               0             0
+  rdma/rdmashared                         0             0
+Events:                                   <none>

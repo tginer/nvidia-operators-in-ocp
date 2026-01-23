@@ -1,0 +1,966 @@
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Running gdrcopy-ctr-run-with-dtk
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + [[ ! -f /mnt/shared-nvidia-driver-toolkit/dir_prepared ]]
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + cp -r /usr/local/gdrcopy /mnt/shared-nvidia-driver-toolkit/
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + set +x
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Fri Nov 21 14:52:05 UTC 2025 openshift-driver-toolkit-ctr started.
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + SRC_SHARED=/mnt/shared-nvidia-driver-toolkit/gdrcopy/src/gdrdrv
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + '[' -d /run/nvidia/driver/usr/src ']'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] Waiting for nvidia driver to be loaded and rootfs to be mounted ...
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + echo 'Waiting for nvidia driver to be loaded and rootfs to be mounted ...'
+[pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm/nvidia-gdrcopy-ctr] + sleep 5

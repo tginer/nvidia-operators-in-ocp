@@ -1,0 +1,12 @@
+NAME                                                  READY   STATUS             RESTARTS        AGE     IP            NODE      NOMINATED NODE   READINESS GATES
+gpu-feature-discovery-hnr8w                           0/1     Init:0/1           0               3h28m   10.254.0.12   sno-arm   <none>           <none>
+gpu-operator-54d498cdbc-f2lft                         1/1     Running            2               6h28m   10.254.0.15   sno-arm   <none>           <none>
+nvidia-container-toolkit-daemonset-sxfkr              0/1     Init:0/1           0               3h28m   10.254.0.8    sno-arm   <none>           <none>
+nvidia-cuda-validator-8b5vw                           0/1     Completed          0               6h26m   <none>        sno-arm   <none>           <none>
+nvidia-dcgm-exporter-n6jqs                            0/1     Init:0/2           0               3h28m   10.254.0.7    sno-arm   <none>           <none>
+nvidia-dcgm-m25d9                                     0/1     Init:0/1           0               3h28m   10.254.0.10   sno-arm   <none>           <none>
+nvidia-device-plugin-daemonset-v46gq                  0/1     Init:0/1           0               3h28m   10.254.0.11   sno-arm   <none>           <none>
+nvidia-driver-daemonset-418.94.202510230424-0-564xm   1/4     CrashLoopBackOff   64 (4m7s ago)   3h29m   10.254.0.6    sno-arm   <none>           <none>
+nvidia-mig-manager-w5799                              0/1     Init:0/1           0               3h28m   10.254.0.9    sno-arm   <none>           <none>
+nvidia-node-status-exporter-cd78t                     1/1     Running            1               6h28m   10.254.0.27   sno-arm   <none>           <none>
+nvidia-operator-validator-6fhjb                       0/1     Init:0/5           0               3h28m   10.254.0.13   sno-arm   <none>           <none>

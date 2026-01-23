@@ -1,0 +1,286 @@
+Name:                 nvidia-driver-daemonset-418.94.202510230424-0-564xm
+Namespace:            nvidia-gpu-operator
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Service Account:      nvidia-driver
+Node:                 sno-arm/192.168.44.65
+Start Time:           Fri, 21 Nov 2025 06:51:05 -0500
+Labels:               app=nvidia-driver-daemonset-418.94.202510230424-0
+                      app.kubernetes.io/component=nvidia-driver
+                      controller-revision-hash=864cc98c78
+                      nvidia.com/precompiled=false
+                      openshift.driver-toolkit=true
+                      pod-template-generation=1
+Annotations:          k8s.ovn.org/pod-networks:
+                        {"default":{"ip_addresses":["10.254.0.6/23"],"mac_address":"0a:58:0a:fe:00:06","gateway_ips":["10.254.0.1"],"routes":[{"dest":"10.254.0.0/...
+                      k8s.v1.cni.cncf.io/network-status:
+                        [{
+                            "name": "ovn-kubernetes",
+                            "interface": "eth0",
+                            "ips": [
+                                "10.254.0.6"
+                            ],
+                            "mac": "0a:58:0a:fe:00:06",
+                            "default": true,
+                            "dns": {}
+                        }]
+                      kubectl.kubernetes.io/default-container: nvidia-driver-ctr
+                      openshift.io/scc: nvidia-driver
+Status:               Running
+IP:                   10.254.0.6
+IPs:
+  IP:           10.254.0.6
+Controlled By:  DaemonSet/nvidia-driver-daemonset-418.94.202510230424-0
+Init Containers:
+  k8s-driver-manager:
+    Container ID:  cri-o://3ce7d83f3988bb0ed91b3df36ff7c721c745fd5a6363d3b134a3615676c41842
+    Image:         nvcr.io/nvidia/cloud-native/k8s-driver-manager@sha256:a6c12abacc9c4f51d3653c90fcad32f19799069889338601407eba05fea4ba18
+    Image ID:      nvcr.io/nvidia/cloud-native/k8s-driver-manager@sha256:53afb576497a9b6e909a3b6a35698f81532a35f5669f21b022eeebdb508fb244
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      driver-manager
+    Args:
+      uninstall_driver
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 21 Nov 2025 06:51:06 -0500
+      Finished:     Fri, 21 Nov 2025 06:51:41 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NODE_NAME:                    (v1:spec.nodeName)
+      NVIDIA_VISIBLE_DEVICES:      void
+      ENABLE_GPU_POD_EVICTION:     true
+      ENABLE_AUTO_DRAIN:           false
+      DRAIN_USE_FORCE:             false
+      DRAIN_POD_SELECTOR_LABEL:    
+      DRAIN_TIMEOUT_SECONDS:       0s
+      DRAIN_DELETE_EMPTYDIR_DATA:  false
+      OPERATOR_NAMESPACE:          nvidia-gpu-operator (v1:metadata.namespace)
+      GPU_DIRECT_RDMA_ENABLED:     true
+    Mounts:
+      /host from host-root (ro)
+      /run/mellanox/drivers from run-mellanox-drivers (rw)
+      /run/nvidia from run-nvidia (rw)
+      /sys from host-sys (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkcfz (ro)
+Containers:
+  nvidia-driver-ctr:
+    Container ID:  cri-o://209a872a95a2450afb414a8b20e33f013ee33dc83edc290367fe2620cff719f8
+    Image:         nvcr.io/nvidia/driver@sha256:317c7ab01f28c87dc8c209b38c49fb2758a595d9ffbc1d71e18530788dcf34be
+    Image ID:      nvcr.io/nvidia/driver@sha256:317c7ab01f28c87dc8c209b38c49fb2758a595d9ffbc1d71e18530788dcf34be
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      ocp_dtk_entrypoint
+    Args:
+      nv-ctr-run-with-dtk
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Fri, 21 Nov 2025 10:15:39 -0500
+      Finished:     Fri, 21 Nov 2025 10:15:44 -0500
+    Ready:          False
+    Restart Count:  44
+    Startup:        exec [sh -c nvidia-smi && touch /run/nvidia/validations/.driver-ctr-ready] delay=60s timeout=60s period=10s #success=1 #failure=120
+    Environment:
+      NODE_NAME:                 (v1:spec.nodeName)
+      NODE_IP:                   (v1:status.hostIP)
+      KERNEL_MODULE_TYPE:       auto
+      GPU_DIRECT_RDMA_ENABLED:  true
+      OPENSHIFT_VERSION:        4.18
+    Mounts:
+      /dev/log from dev-log (rw)
+      /etc/pki/ca-trust/extracted/pem from gpu-operator-trusted-ca (ro)
+      /host-etc/os-release from host-os-release (ro)
+      /lib/firmware from nv-firmware (rw)
+      /mnt/shared-nvidia-driver-toolkit from shared-nvidia-driver-toolkit (rw)
+      /run/mellanox/drivers from run-mellanox-drivers (rw)
+      /run/mellanox/drivers/usr/src from mlnx-ofed-usr-src (rw)
+      /run/nvidia from run-nvidia (rw)
+      /run/nvidia-fabricmanager from run-nvidia-fabricmanager (rw)
+      /run/nvidia-topologyd from run-nvidia-topologyd (rw)
+      /sys/devices/system/memory/auto_online_blocks from sysfs-memory-online (rw)
+      /sys/module/firmware_class/parameters/path from firmware-search-path (rw)
+      /var/log from var-log (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkcfz (ro)
+  nvidia-peermem-ctr:
+    Container ID:  cri-o://fcd14a302c9ea4e80597f47540ce0dcbf7a0f4489499878c6ab166da549044ab
+    Image:         nvcr.io/nvidia/driver@sha256:317c7ab01f28c87dc8c209b38c49fb2758a595d9ffbc1d71e18530788dcf34be
+    Image ID:      nvcr.io/nvidia/driver@sha256:317c7ab01f28c87dc8c209b38c49fb2758a595d9ffbc1d71e18530788dcf34be
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      nvidia-driver
+    Args:
+      reload_nvidia_peermem
+    State:          Running
+      Started:      Fri, 21 Nov 2025 10:12:25 -0500
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    143
+      Started:      Fri, 21 Nov 2025 09:52:25 -0500
+      Finished:     Fri, 21 Nov 2025 10:12:25 -0500
+    Ready:          False
+    Restart Count:  10
+    Liveness:       exec [sh -c nvidia-driver probe_nvidia_peermem] delay=30s timeout=10s period=30s #success=1 #failure=1
+    Startup:        exec [sh -c nvidia-driver probe_nvidia_peermem] delay=10s timeout=10s period=10s #success=1 #failure=120
+    Environment:    <none>
+    Mounts:
+      /dev/log from dev-log (ro)
+      /run/mellanox/drivers from run-mellanox-drivers (rw)
+      /run/nvidia from run-nvidia (rw)
+      /var/log from var-log (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkcfz (ro)
+  nvidia-gdrcopy-ctr:
+    Container ID:  cri-o://38445f1b5b69f12f3492bcfff62c205d2cdafc862aff52a4207c8127b88a20f5
+    Image:         nvcr.io/nvidia/cloud-native/gdrdrv@sha256:5c4e61f7ba83d7a64ff2523d447c209ce5bde1ddc79acaf1f32f19620b4912d6
+    Image ID:      nvcr.io/nvidia/cloud-native/gdrdrv@sha256:3ddcd5b56e80a41e2176aab1663700e0576082dee84363a577cee8903a7e0eb7
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      ocp_dtk_entrypoint
+    Args:
+      gdrcopy-ctr-run-with-dtk
+    State:          Running
+      Started:      Fri, 21 Nov 2025 10:12:05 -0500
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    143
+      Started:      Fri, 21 Nov 2025 09:52:05 -0500
+      Finished:     Fri, 21 Nov 2025 10:12:05 -0500
+    Ready:          False
+    Restart Count:  10
+    Startup:        exec [sh -c lsmod | grep gdrdrv] delay=10s timeout=10s period=10s #success=1 #failure=120
+    Environment:    <none>
+    Mounts:
+      /dev/log from dev-log (ro)
+      /mnt/shared-nvidia-driver-toolkit from shared-nvidia-driver-toolkit (rw)
+      /run/nvidia from run-nvidia (rw)
+      /var/log from var-log (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkcfz (ro)
+  openshift-driver-toolkit-ctr:
+    Container ID:  cri-o://77e6e55ca75e8a5a8bff0bae820da9c95f9b6c880c4aa7bd52751106d848914a
+    Image:         quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:75798070ee8bba72891c1ef66858117d352b2b98a4072c4ce5e6424d03845930
+    Image ID:      quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:470966c00cb3258fa78d122ed19971a385539435801ab7eb1ea133d173a9f8b7
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      bash
+      -xc
+    Args:
+      until [ -f /mnt/shared-nvidia-driver-toolkit/dir_prepared ]; do echo  Waiting for nvidia-driver-ctr container to prepare the shared directory ...; sleep 10; done; exec /mnt/shared-nvidia-driver-toolkit/ocp_dtk_entrypoint dtk-build-driver
+    State:          Running
+      Started:      Fri, 21 Nov 2025 06:51:42 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      RHCOS_VERSION:           418.94.202510230424-0
+      NVIDIA_VISIBLE_DEVICES:  void
+      GDRCOPY_ENABLED:         true
+    Mounts:
+      /host-etc/os-release from host-os-release (ro)
+      /mnt/shared-nvidia-driver-toolkit from shared-nvidia-driver-toolkit (rw)
+      /run/mellanox/drivers/usr/src from mlnx-ofed-usr-src (rw)
+      /var/log from var-log (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkcfz (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  run-nvidia:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia
+    HostPathType:  DirectoryOrCreate
+  var-log:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/log
+    HostPathType:  
+  dev-log:
+    Type:          HostPath (bare host directory volume)
+    Path:          /dev/log
+    HostPathType:  
+  host-os-release:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/os-release
+    HostPathType:  
+  run-nvidia-fabricmanager:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia-fabricmanager
+    HostPathType:  DirectoryOrCreate
+  run-nvidia-topologyd:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia-topologyd
+    HostPathType:  DirectoryOrCreate
+  mlnx-ofed-usr-src:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/mellanox/drivers/usr/src
+    HostPathType:  DirectoryOrCreate
+  run-mellanox-drivers:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/mellanox/drivers
+    HostPathType:  DirectoryOrCreate
+  run-nvidia-validations:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/validations
+    HostPathType:  DirectoryOrCreate
+  host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  host-sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  Directory
+  firmware-search-path:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys/module/firmware_class/parameters/path
+    HostPathType:  
+  sysfs-memory-online:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys/devices/system/memory/auto_online_blocks
+    HostPathType:  
+  nv-firmware:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver/lib/firmware
+    HostPathType:  DirectoryOrCreate
+  gpu-operator-trusted-ca:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      gpu-operator-trusted-ca
+    Optional:  false
+  shared-nvidia-driver-toolkit:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-mkcfz:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+    ConfigMapName:           openshift-service-ca.crt
+    ConfigMapOptional:       <nil>
+QoS Class:                   BestEffort
+Node-Selectors:              feature.node.kubernetes.io/system-os_release.OSTREE_VERSION=418.94.202510230424-0
+                             nvidia.com/gpu.deploy.driver=true
+Tolerations:                 node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+                             nvidia.com/gpu:NoSchedule op=Exists
+Events:
+  Type     Reason     Age                       From     Message
+  ----     ------     ----                      ----     -------
+  Normal   Pulled     112m (x24 over 3h28m)     kubelet  Container image "nvcr.io/nvidia/driver@sha256:317c7ab01f28c87dc8c209b38c49fb2758a595d9ffbc1d71e18530788dcf34be" already present on machine
+  Warning  BackOff    7m48s (x972 over 3h27m)   kubelet  Back-off restarting failed container nvidia-driver-ctr in pod nvidia-driver-daemonset-418.94.202510230424-0-564xm_nvidia-gpu-operator(1942cff1-835a-490a-85f6-fba09e4415fd)
+  Warning  Unhealthy  2m39s (x1231 over 3h27m)  kubelet  Startup probe failed:

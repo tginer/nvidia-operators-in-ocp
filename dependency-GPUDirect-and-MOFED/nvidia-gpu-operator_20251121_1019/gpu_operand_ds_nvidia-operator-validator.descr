@@ -1,0 +1,136 @@
+Name:           nvidia-operator-validator
+Selector:       app=nvidia-operator-validator,app.kubernetes.io/part-of=gpu-operator
+Node-Selector:  nvidia.com/gpu.deploy.operator-validator=true
+Labels:         app=nvidia-operator-validator
+                app.kubernetes.io/part-of=gpu-operator
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 2481219837
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  0 Running / 1 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-operator-validator
+                    app.kubernetes.io/part-of=gpu-operator
+  Service Account:  nvidia-operator-validator
+  Init Containers:
+   driver-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    Environment:
+      WITH_WAIT:           true
+      COMPONENT:           driver
+      OPERATOR_NAMESPACE:   (v1:metadata.namespace)
+    Mounts:
+      /host from host-root (ro)
+      /host-dev-char from host-dev-char (rw)
+      /run/nvidia/driver from driver-install-dir (rw)
+      /run/nvidia/validations from run-nvidia-validations (rw)
+   gdrcopy-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    Environment:
+      WITH_WAIT:  true
+      COMPONENT:  gdrcopy
+      NODE_NAME:   (v1:spec.nodeName)
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+   toolkit-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    Environment:
+      NVIDIA_VISIBLE_DEVICES:  all
+      WITH_WAIT:               false
+      COMPONENT:               toolkit
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+   cuda-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    Environment:
+      WITH_WAIT:                    false
+      COMPONENT:                    cuda
+      NODE_NAME:                     (v1:spec.nodeName)
+      OPERATOR_NAMESPACE:            (v1:metadata.namespace)
+      VALIDATOR_IMAGE:              nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+      VALIDATOR_IMAGE_PULL_POLICY:  
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+   plugin-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      nvidia-validator
+    Environment:
+      COMPONENT:                    plugin
+      WITH_WAIT:                    false
+      WITH_WORKLOAD:                false
+      MIG_STRATEGY:                 single
+      NODE_NAME:                     (v1:spec.nodeName)
+      OPERATOR_NAMESPACE:            (v1:metadata.namespace)
+      VALIDATOR_IMAGE:              nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+      VALIDATOR_IMAGE_PULL_POLICY:  
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+  Containers:
+   nvidia-operator-validator:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      echo all validations are successful; while true; do sleep 86400; done
+    Environment:  <none>
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+  Volumes:
+   run-nvidia-validations:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/validations
+    HostPathType:  DirectoryOrCreate
+   driver-install-dir:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver
+    HostPathType:  
+   host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+   host-dev-char:
+    Type:               HostPath (bare host directory volume)
+    Path:               /dev/char
+    HostPathType:       
+  Priority Class Name:  system-node-critical
+Events:                 <none>

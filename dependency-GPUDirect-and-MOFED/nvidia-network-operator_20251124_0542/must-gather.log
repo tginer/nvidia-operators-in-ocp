@@ -1,0 +1,56 @@
+Running in OpenShift.
+Get the cluster version
+Get the operator namespaces
+Using 'nvidia-network-operator' as operator namespace
+
+#
+# NicClusterPolicy
+#
+
+Get nicclusterpolicy.mellanox.com/nic-cluster-policy
+
+#
+# Nodes and machines
+#
+
+Get all the machines
+Get the labels of the nodes with NVIDIA PCI cards
+Get the GPU nodes (status)
+Get the GPU nodes (description)
+
+#
+# Operator Pod
+#
+
+Get the Network Operator Pod (status)
+Get the Network Operator Pod (yaml)
+Get the Network Operator Pod logs
+
+#
+# Operand Pods
+#
+
+Get the Pods in nvidia-network-operator (status)
+Get the Pods in nvidia-network-operator (yaml)
+Get the Network Operator Pods Images
+Get the description and logs of the Network  Operator Pods
+Skipping operator pod nvidia-network-operator-controller-manager-58945d69c-647dc ...
+Skipping pod/rdma-shared-dp-ds-n2mx6, not a NVIDA/network Pod ...
+
+#
+# Operand DaemonSets
+#
+
+Get the DaemonSets in nvidia-network-operator (status)
+Get the DaemonSets in nvidia-network-operator (yaml)
+Get the description of the network Operator DaemonSets
+
+#
+# nvidia-bug-report.sh
+#
+
+
+#
+# All done!
+# Logs saved into /tmp/nvidia-network-operator_20251124_0542.
+#

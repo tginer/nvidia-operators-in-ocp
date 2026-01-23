@@ -1,0 +1,92 @@
+Name:             nvidia-cuda-validator-8b5vw
+Namespace:        nvidia-gpu-operator
+Priority:         0
+Service Account:  nvidia-operator-validator
+Node:             sno-arm/192.168.44.65
+Start Time:       Fri, 21 Nov 2025 03:53:41 -0500
+Labels:           app=nvidia-cuda-validator
+Annotations:      k8s.ovn.org/pod-networks:
+                    {"default":{"ip_addresses":["10.254.0.39/23"],"mac_address":"0a:58:0a:fe:00:27","gateway_ips":["10.254.0.1"],"routes":[{"dest":"10.254.0.0...
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "ovn-kubernetes",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.254.0.39"
+                        ],
+                        "mac": "0a:58:0a:fe:00:27",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  openshift.io/scc: nvidia-operator-validator
+Status:           Succeeded
+IP:               
+IPs:              <none>
+Controlled By:    ClusterPolicy/gpu-cluster-policy
+Init Containers:
+  cuda-validation:
+    Container ID:  cri-o://111b565e5cf832769db1926d92265945f1f761d13fbb6cd22101739cabd48bb2
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      nvcr.io/nvidia/gpu-operator@sha256:04d31f9babb5567fe34d1b68124cf55fb5cddcf1e8c2d8a40fa5154d221a24ce
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      vectorAdd
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 21 Nov 2025 03:53:42 -0500
+      Finished:     Fri, 21 Nov 2025 03:53:42 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NVIDIA_VISIBLE_DEVICES:  all
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-4k7s2 (ro)
+Containers:
+  nvidia-cuda-validator:
+    Container ID:  cri-o://3d47a3237c50b485e1956e96f72b08fc0c18954b036da171cdc1aab840cbac3c
+    Image:         nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Image ID:      nvcr.io/nvidia/gpu-operator@sha256:04d31f9babb5567fe34d1b68124cf55fb5cddcf1e8c2d8a40fa5154d221a24ce
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      echo cuda workload validation is successful
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 21 Nov 2025 03:53:43 -0500
+      Finished:     Fri, 21 Nov 2025 03:53:43 -0500
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-4k7s2 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-4k7s2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+    ConfigMapName:           openshift-service-ca.crt
+    ConfigMapOptional:       <nil>
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+                             nvidia.com/gpu:NoSchedule op=Exists
+Events:                      <none>

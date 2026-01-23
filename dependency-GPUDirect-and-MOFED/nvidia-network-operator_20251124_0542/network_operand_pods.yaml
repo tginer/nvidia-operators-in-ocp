@@ -1,0 +1,1041 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/scc: privileged
+    creationTimestamp: "2025-11-21T11:49:17Z"
+    generateName: mofed-rhcos4.18-554bdbd7cf-ds-
+    labels:
+      app: mofed-rhcos4.18-554bdbd7cf
+      controller-revision-hash: bddcbf449
+      kernel: 5.14.0-427.96.1.el9_4.aarch64_64k
+      nvidia.com/ofed-driver: ""
+      pod-template-generation: "1"
+    name: mofed-rhcos4.18-554bdbd7cf-ds-d4dv8
+    namespace: nvidia-network-operator
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: mofed-rhcos4.18-554bdbd7cf-ds
+      uid: 93cc93cf-8d02-407c-81c3-5463178a5302
+    resourceVersion: "452297"
+    uid: ae81fbb8-2ff8-4242-95ca-1a9632a2e52a
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - sno-arm
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: nvidia.com/ofed-driver
+              operator: Exists
+          topologyKey: kubernetes.io/hostname
+    containers:
+    - env:
+      - name: DTK_OCP_DRIVER_BUILD
+        value: "true"
+      - name: DTK_OCP_NIC_SHARED_DIR
+        value: /mnt/shared-doca-driver-toolkit
+      - name: CREATE_IFNAMES_UDEV
+        value: "true"
+      - name: NVIDIA_NIC_DRIVERS_INVENTORY_PATH
+        value: /mnt/drivers-inventory
+      image: registry-arm.slcm.partner.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - sh
+          - -c
+          - lsmod | grep mlx5_core
+        failureThreshold: 1
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: mofed-container
+      readinessProbe:
+        exec:
+          command:
+          - sh
+          - -c
+          - lsmod | grep mlx5_core
+        failureThreshold: 1
+        initialDelaySeconds: 10
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      resources: {}
+      securityContext:
+        privileged: true
+        seLinuxOptions:
+          level: s0
+      startupProbe:
+        exec:
+          command:
+          - sh
+          - -c
+          - ls /run/mellanox/drivers/.driver-ready
+        failureThreshold: 60
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 10
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/mellanox/drivers
+        mountPropagation: Bidirectional
+        name: run-mlnx-ofed
+      - mountPath: /etc/network
+        name: etc-network
+      - mountPath: /host/etc
+        name: host-etc
+      - mountPath: /host/usr
+        name: host-usr
+      - mountPath: /host/lib/udev
+        name: host-udev
+      - mountPath: /run/udev
+        name: host-run-udev
+        readOnly: true
+      - mountPath: /host/lib/modules
+        name: host-lib-modules
+      - mountPath: /mnt/drivers-inventory
+        name: drivers-inventory
+      - mountPath: /etc/modprobe.d/ib_core.conf
+        name: host-ib-core
+      - mountPath: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+        name: ocp-network-operator-trusted-ca
+        readOnly: true
+        subPath: tls-ca-bundle.pem
+      - mountPath: /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443
+        name: arm-registry-config
+        readOnly: true
+        subPath: registry-arm.slcm.partner.lab..8443
+      - mountPath: /mnt/shared-doca-driver-toolkit
+        name: shared-doca-driver-toolkit
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-x9bw4
+        readOnly: true
+    - args:
+      - |
+        until [ -f /mnt/shared-doca-driver-toolkit/dtk_start_compile ]; do
+          echo Waiting for mofed-container container to prepare the shared directory
+          sleep 3
+        done
+        exec /mnt/shared-doca-driver-toolkit/dtk_nic_driver_build.sh
+      command:
+      - bash
+      - -xc
+      env:
+      - name: DTK_OCP_NIC_SHARED_DIR
+        value: /mnt/shared-doca-driver-toolkit
+      - name: CREATE_IFNAMES_UDEV
+        value: "true"
+      - name: NVIDIA_NIC_DRIVERS_INVENTORY_PATH
+        value: /mnt/drivers-inventory
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:75798070ee8bba72891c1ef66858117d352b2b98a4072c4ce5e6424d03845930
+      imagePullPolicy: IfNotPresent
+      name: openshift-driver-toolkit-ctr
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+        name: ocp-network-operator-trusted-ca
+        readOnly: true
+        subPath: tls-ca-bundle.pem
+      - mountPath: /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443
+        name: arm-registry-config
+        readOnly: true
+        subPath: registry-arm.slcm.partner.lab..8443
+      - mountPath: /mnt/shared-doca-driver-toolkit
+        name: shared-doca-driver-toolkit
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-x9bw4
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    initContainers:
+    - args:
+      - --node-name
+      - $(NODE_NAME)
+      - --configmap-name
+      - ofed-init-container-config
+      - --configmap-namespace
+      - nvidia-network-operator
+      - --configmap-key
+      - config.json
+      env:
+      - name: NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+      imagePullPolicy: IfNotPresent
+      name: network-operator-init-container
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-x9bw4
+        readOnly: true
+    nodeName: sno-arm
+    nodeSelector:
+      feature.node.kubernetes.io/kernel-version.full: 5.14.0-427.96.1.el9_4.aarch64_64k
+      feature.node.kubernetes.io/pci-15b3.present: "true"
+      feature.node.kubernetes.io/system-os_release.ID: rhcos
+      feature.node.kubernetes.io/system-os_release.OSTREE_VERSION: 418.94.202510230424-0
+      feature.node.kubernetes.io/system-os_release.VERSION_ID: "4.18"
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: ofed-driver
+    serviceAccountName: ofed-driver
+    terminationGracePeriodSeconds: 300
+    tolerations:
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /run/mellanox/drivers
+        type: ""
+      name: run-mlnx-ofed
+    - hostPath:
+        path: /etc/network
+        type: ""
+      name: etc-network
+    - hostPath:
+        path: /etc
+        type: ""
+      name: host-etc
+    - hostPath:
+        path: /usr
+        type: ""
+      name: host-usr
+    - hostPath:
+        path: /lib/udev
+        type: ""
+      name: host-udev
+    - hostPath:
+        path: /run/udev
+        type: ""
+      name: host-run-udev
+    - hostPath:
+        path: /lib/modules
+        type: ""
+      name: host-lib-modules
+    - hostPath:
+        path: /var/opt/mofed-container/inventory
+        type: DirectoryOrCreate
+      name: drivers-inventory
+    - hostPath:
+        path: /etc/modprobe.d/ib_core.conf
+        type: FileOrCreate
+      name: host-ib-core
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: ca-bundle.crt
+          path: tls-ca-bundle.pem
+        name: ocp-network-operator-trusted-ca
+      name: ocp-network-operator-trusted-ca
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: registry-arm.slcm.partner.lab..8443
+          path: registry-arm.slcm.partner.lab..8443
+        name: arm-registry-config
+      name: arm-registry-config
+    - emptyDir: {}
+      name: shared-doca-driver-toolkit
+    - name: kube-api-access-x9bw4
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:51:06Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:51:06Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:58:45Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:58:45Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:51:05Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://1398c95d0a88d3c5f11340f96cbd2db9fddf924c67e8662bdb3b626dbbe225f1
+      image: registry-arm.slcm.partner.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container:25.07-0.9.7.0-rhcos4.18-arm64
+      imageID: registry-arm.slcm.partner.lab:8443/nvidia/certified-operator/nvidia/mellanox/doca-driver-container@sha256:d41eea65b102dc5bb5792871ae212b59a65dae492ca109c52138d5626eba1ffd
+      lastState: {}
+      name: mofed-container
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-11-21T11:51:06Z"
+      volumeMounts:
+      - mountPath: /run/mellanox/drivers
+        name: run-mlnx-ofed
+      - mountPath: /etc/network
+        name: etc-network
+      - mountPath: /host/etc
+        name: host-etc
+      - mountPath: /host/usr
+        name: host-usr
+      - mountPath: /host/lib/udev
+        name: host-udev
+      - mountPath: /run/udev
+        name: host-run-udev
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /host/lib/modules
+        name: host-lib-modules
+      - mountPath: /mnt/drivers-inventory
+        name: drivers-inventory
+      - mountPath: /etc/modprobe.d/ib_core.conf
+        name: host-ib-core
+      - mountPath: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+        name: ocp-network-operator-trusted-ca
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443
+        name: arm-registry-config
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /mnt/shared-doca-driver-toolkit
+        name: shared-doca-driver-toolkit
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-x9bw4
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://e04b9b947d078e6720d1eb2b2dd041be2da7e119c6cf8ba417b6008e68fd4042
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:75798070ee8bba72891c1ef66858117d352b2b98a4072c4ce5e6424d03845930
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:470966c00cb3258fa78d122ed19971a385539435801ab7eb1ea133d173a9f8b7
+      lastState: {}
+      name: openshift-driver-toolkit-ctr
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-11-21T11:51:13Z"
+      volumeMounts:
+      - mountPath: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+        name: ocp-network-operator-trusted-ca
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /etc/yum.repos.d/registry-arm.slcm.partner.lab..8443
+        name: arm-registry-config
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /mnt/shared-doca-driver-toolkit
+        name: shared-doca-driver-toolkit
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-x9bw4
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.44.65
+    hostIPs:
+    - ip: 192.168.44.65
+    initContainerStatuses:
+    - containerID: cri-o://fc9af34eeedd442fe760c58d25568b86662d31731689468e85afe0301e0615ce
+      image: nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+      imageID: nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+      lastState: {}
+      name: network-operator-init-container
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: cri-o://fc9af34eeedd442fe760c58d25568b86662d31731689468e85afe0301e0615ce
+          exitCode: 0
+          finishedAt: "2025-11-21T11:51:05Z"
+          reason: Completed
+          startedAt: "2025-11-21T11:51:05Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-x9bw4
+        readOnly: true
+        recursiveReadOnly: Disabled
+    phase: Running
+    podIP: 192.168.44.65
+    podIPs:
+    - ip: 192.168.44.65
+    qosClass: BestEffort
+    startTime: "2025-11-21T11:51:05Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      alm-examples: |-
+        [
+          {
+            "apiVersion": "mellanox.com/v1alpha1",
+            "kind": "HostDeviceNetwork",
+            "metadata": {
+              "name": "example-hostdevice-network"
+            },
+            "spec": {
+              "ipam": "{\n  \"type\": \"whereabouts\",\n  \"range\": \"192.168.3.225/28\",\n  \"exclude\": [\n   \"192.168.3.229/30\",\n   \"192.168.3.236/32\"\n  ]\n}\n",
+              "networkNamespace": "default",
+              "resourceName": "hostdev"
+            }
+          },
+          {
+            "apiVersion": "mellanox.com/v1alpha1",
+            "kind": "IPoIBNetwork",
+            "metadata": {
+              "name": "example-ipoibnetwork"
+            },
+            "spec": {
+              "ipam": "{\n  \"type\": \"whereabouts\",\n  \"range\": \"192.168.6.225/28\",\n  \"exclude\": [\n   \"192.168.6.229/30\",\n   \"192.168.6.236/32\"\n  ]\n}\n",
+              "master": "ibs3f1",
+              "networkNamespace": "default"
+            }
+          },
+          {
+            "apiVersion": "mellanox.com/v1alpha1",
+            "kind": "MacvlanNetwork",
+            "metadata": {
+              "name": "example-macvlannetwork"
+            },
+            "spec": {
+              "ipam": "{\n  \"type\": \"whereabouts\",\n  \"range\": \"192.168.2.225/24\",\n  \"exclude\": [\n   \"192.168.2.229/30\",\n   \"192.168.2.236/32\"\n  ]\n}\n",
+              "master": "ens2f0",
+              "mode": "bridge",
+              "mtu": 1500,
+              "networkNamespace": "default"
+            }
+          },
+          {
+            "apiVersion": "mellanox.com/v1alpha1",
+            "kind": "NicClusterPolicy",
+            "metadata": {
+              "name": "nic-cluster-policy"
+            },
+            "spec": {
+              "ofedDriver": {
+                "image": "doca-driver",
+                "livenessProbe": {
+                  "initialDelaySeconds": 30,
+                  "periodSeconds": 30
+                },
+                "readinessProbe": {
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 30
+                },
+                "repository": "nvcr.io/nvidia/mellanox",
+                "startupProbe": {
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 20
+                },
+                "terminationGracePeriodSeconds": 300,
+                "upgradePolicy": {
+                  "autoUpgrade": true,
+                  "drain": {
+                    "deleteEmptyDir": true,
+                    "enable": true,
+                    "force": true,
+                    "podSelector": "",
+                    "timeoutSeconds": 300
+                  },
+                  "maxParallelUpgrades": 1
+                },
+                "version": "doca3.1.0-25.07-0.9.7.0-0"
+              },
+              "rdmaSharedDevicePlugin": {
+                "config": "{\n  \"configList\": [\n    {\n      \"resourceName\": \"rdma_shared_device_a\",\n      \"rdmaHcaMax\": 63,\n      \"selectors\": {\n        \"vendors\": [\"15b3\"]\n      }\n    }\n  ]\n}\n",
+                "image": "k8s-rdma-shared-dev-plugin",
+                "repository": "nvcr.io/nvidia/mellanox",
+                "version": "sha256:a87096761d155eeb6f470e042d2d167bb466d57e63b4aba957f57d745e15a9b2"
+              }
+            }
+          }
+        ]
+      capabilities: Basic Install
+      containerImage: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+      createdAt: "2025-08-21T19:12:20Z"
+      description: Deploy and manage NVIDIA networking resources in Kubernetes
+      features.operators.openshift.io/cnf: "false"
+      features.operators.openshift.io/cni: "true"
+      features.operators.openshift.io/csi: "false"
+      features.operators.openshift.io/disconnected: "true"
+      features.operators.openshift.io/fips-compliant: "false"
+      features.operators.openshift.io/proxy-aware: "true"
+      features.operators.openshift.io/tls-profiles: "false"
+      features.operators.openshift.io/token-auth-aws: "false"
+      features.operators.openshift.io/token-auth-azure: "false"
+      features.operators.openshift.io/token-auth-gcp: "false"
+      k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.254.0.55/23"],"mac_address":"0a:58:0a:fe:00:37","gateway_ips":["10.254.0.1"],"routes":[{"dest":"10.254.0.0/16","nextHop":"10.254.0.1"},{"dest":"172.31.0.0/16","nextHop":"10.254.0.1"},{"dest":"169.254.0.5/32","nextHop":"10.254.0.1"},{"dest":"100.64.0.0/16","nextHop":"10.254.0.1"}],"ip_address":"10.254.0.55/23","gateway_ip":"10.254.0.1","role":"primary"}}'
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "ovn-kubernetes",
+            "interface": "eth0",
+            "ips": [
+                "10.254.0.55"
+            ],
+            "mac": "0a:58:0a:fe:00:37",
+            "default": true,
+            "dns": {}
+        }]
+      kubectl.kubernetes.io/default-container: manager
+      olm.operatorGroup: nvidia-network-operator
+      olm.operatorNamespace: nvidia-network-operator
+      olm.targetNamespaces: nvidia-network-operator
+      olmcahash: 6573b0a59f5699183df17a92f8885d4f4da7182b645a1e1ac9ecfe054d0c209c
+      openshift.io/scc: privileged
+      operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"HostDeviceNetwork","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"IPoIBNetwork","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"MacvlanNetwork","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"mellanox.com","kind":"NicClusterPolicy","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"nvidia-network-operator","version":"25.7.0"}}]}'
+      operatorframework.io/suggested-namespace: nvidia-network-operator
+      operators.operatorframework.io/builder: operator-sdk-v1.33.0
+      operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
+      provider: NVIDIA
+      repository: https://github.com/Mellanox/network-operator/
+      support: NVIDIA
+    creationTimestamp: "2025-11-20T16:28:43Z"
+    generateName: nvidia-network-operator-controller-manager-58945d69c-
+    labels:
+      control-plane: nvidia-network-operator-controller
+      nvidia.com/ofed-driver-upgrade-drain.skip: "true"
+      pod-template-hash: 58945d69c
+    name: nvidia-network-operator-controller-manager-58945d69c-647dc
+    namespace: nvidia-network-operator
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: nvidia-network-operator-controller-manager-58945d69c
+      uid: 0ff08226-72c2-4f3e-8be4-850fff2f7a20
+    resourceVersion: "448867"
+    uid: 162562ff-f6a7-4ed9-81c9-3b6621abfb19
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: node-role.kubernetes.io/master
+              operator: In
+              values:
+              - ""
+          weight: 1
+        - preference:
+            matchExpressions:
+            - key: node-role.kubernetes.io/control-plane
+              operator: In
+              values:
+              - ""
+          weight: 1
+    containers:
+    - args:
+      - --leader-elect
+      command:
+      - /manager
+      env:
+      - name: ENABLE_WEBHOOKS
+        value: "true"
+      - name: STATE_MANIFEST_BASE_DIR
+        value: /manifests
+      - name: POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: USE_DTK
+        value: "true"
+      - name: OFED_INIT_CONTAINER_IMAGE
+        value: nvcr.io/nvidia/mellanox/network-operator-init-container@sha256:02ee60ac6ee163acc97706bd4229d268f608a95bcbcb6fccee90ceb1d8a6c62b
+      - name: OPERATOR_CONDITION_NAME
+        value: nvidia-network-operator.v25.7.0
+      image: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /healthz
+          port: 8081
+          scheme: HTTP
+        initialDelaySeconds: 15
+        periodSeconds: 20
+        successThreshold: 1
+        timeoutSeconds: 1
+      name: manager
+      ports:
+      - containerPort: 9443
+        name: webhook-server
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /readyz
+          port: 8081
+          scheme: HTTP
+        initialDelaySeconds: 5
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 5m
+          memory: 64Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /tmp/k8s-webhook-server/serving-certs
+        name: webhook-cert
+      - mountPath: /apiserver.local.config/certificates
+        name: apiservice-cert
+      - mountPath: /etc/pki/tls/certs/
+        name: custom-registry-ca
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-vnrlp
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: sno-arm
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      runAsUser: 65532
+    serviceAccount: nvidia-network-operator-controller-manager
+    serviceAccountName: nvidia-network-operator-controller-manager
+    terminationGracePeriodSeconds: 10
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Equal
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Equal
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: cert
+      secret:
+        defaultMode: 420
+        secretName: webhook-server-cert
+    - name: apiservice-cert
+      secret:
+        defaultMode: 420
+        items:
+        - key: tls.crt
+          path: apiserver.crt
+        - key: tls.key
+          path: apiserver.key
+        secretName: nvidia-network-operator-controller-manager-service-cert
+    - name: webhook-cert
+      secret:
+        defaultMode: 420
+        items:
+        - key: tls.crt
+          path: tls.crt
+        - key: tls.key
+          path: tls.key
+        secretName: nvidia-network-operator-controller-manager-service-cert
+    - configMap:
+        defaultMode: 420
+        name: arm-registry-config
+      name: custom-registry-ca
+    - name: kube-api-access-vnrlp
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:48:57Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-20T16:28:43Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:49:06Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:49:06Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-20T16:28:43Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://3970c448dc24a77f31a85c51e8f6656bc558ea2257f755db5892ddd9541d5926
+      image: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+      imageID: nvcr.io/nvidia/cloud-native/network-operator@sha256:51270965284cceeda659fb1098e70a888b39664ceade7e9d455fb95ac85914b7
+      lastState: {}
+      name: manager
+      ready: true
+      restartCount: 6
+      started: true
+      state:
+        running:
+          startedAt: "2025-11-21T11:48:57Z"
+      volumeMounts:
+      - mountPath: /tmp/k8s-webhook-server/serving-certs
+        name: webhook-cert
+      - mountPath: /apiserver.local.config/certificates
+        name: apiservice-cert
+      - mountPath: /etc/pki/tls/certs/
+        name: custom-registry-ca
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-vnrlp
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.44.65
+    hostIPs:
+    - ip: 192.168.44.65
+    phase: Running
+    podIP: 10.254.0.55
+    podIPs:
+    - ip: 10.254.0.55
+    qosClass: Burstable
+    startTime: "2025-11-20T16:28:43Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/scc: privileged
+    creationTimestamp: "2025-11-21T11:58:46Z"
+    generateName: rdma-shared-dp-ds-
+    labels:
+      app: rdma-shared-dp
+      controller-revision-hash: "7599588557"
+      pod-template-generation: "1"
+    name: rdma-shared-dp-ds-n2mx6
+    namespace: nvidia-network-operator
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: rdma-shared-dp-ds
+      uid: 3bc1ad34-57dc-4469-baa2-f334d10f9777
+    resourceVersion: "452324"
+    uid: 0df05f9e-08e9-424e-8e84-b523cff95728
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - sno-arm
+    containers:
+    - command:
+      - /bin/k8s-rdma-shared-dp
+      image: ghcr.io/mellanox/k8s-rdma-shared-dev-plugin:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+      imagePullPolicy: IfNotPresent
+      name: rdma-shared-dp
+      resources: {}
+      securityContext:
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/kubelet/device-plugins
+        name: device-plugin
+      - mountPath: /var/lib/kubelet/plugins_registry
+        name: plugins-registry
+      - mountPath: /k8s-rdma-shared-dev-plugin
+        name: config
+      - mountPath: /dev/
+        name: devs
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-dw27f
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    initContainers:
+    - args:
+      - until lsmod | grep mlx5_core; do echo waiting for OFED drivers to be loaded;
+        sleep 30; done
+      command:
+      - sh
+      - -c
+      image: ghcr.io/mellanox/k8s-rdma-shared-dev-plugin:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+      imagePullPolicy: IfNotPresent
+      name: ofed-driver-validation
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-dw27f
+        readOnly: true
+    nodeName: sno-arm
+    nodeSelector:
+      feature.node.kubernetes.io/pci-15b3.present: "true"
+      network.nvidia.com/operator.mofed.wait: "false"
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: rdma-shared
+    serviceAccountName: rdma-shared
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/device-plugins
+        type: ""
+      name: device-plugin
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry
+        type: ""
+      name: plugins-registry
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: config.json
+          path: config.json
+        name: rdma-devices
+      name: config
+    - hostPath:
+        path: /dev/
+        type: ""
+      name: devs
+    - name: kube-api-access-dw27f
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:58:47Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:58:47Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:58:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:58:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-11-21T11:58:46Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://baea3b1288bb02958dc039bd1f029e903b6e445c1bb63dc26e1462c68e8ee1b9
+      image: ghcr.io/mellanox/k8s-rdma-shared-dev-plugin:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+      imageID: ghcr.io/mellanox/k8s-rdma-shared-dev-plugin@sha256:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+      lastState: {}
+      name: rdma-shared-dp
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-11-21T11:58:48Z"
+      volumeMounts:
+      - mountPath: /var/lib/kubelet/device-plugins
+        name: device-plugin
+      - mountPath: /var/lib/kubelet/plugins_registry
+        name: plugins-registry
+      - mountPath: /k8s-rdma-shared-dev-plugin
+        name: config
+      - mountPath: /dev/
+        name: devs
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-dw27f
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.44.65
+    hostIPs:
+    - ip: 192.168.44.65
+    initContainerStatuses:
+    - containerID: cri-o://ef466d1a10ddaaae71e2702f736f2b4222ada6fedbb5fa29e26954d174c4968d
+      image: ghcr.io/mellanox/k8s-rdma-shared-dev-plugin:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+      imageID: ghcr.io/mellanox/k8s-rdma-shared-dev-plugin@sha256:1eb5ab7f4b6f0cf89c954cf7ac8eb2e6fb2290a4f5f57417136a5302f20b12c8
+      lastState: {}
+      name: ofed-driver-validation
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: cri-o://ef466d1a10ddaaae71e2702f736f2b4222ada6fedbb5fa29e26954d174c4968d
+          exitCode: 0
+          finishedAt: "2025-11-21T11:58:46Z"
+          reason: Completed
+          startedAt: "2025-11-21T11:58:46Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-dw27f
+        readOnly: true
+        recursiveReadOnly: Disabled
+    phase: Running
+    podIP: 192.168.44.65
+    podIPs:
+    - ip: 192.168.44.65
+    qosClass: BestEffort
+    startTime: "2025-11-21T11:58:46Z"
+kind: List
+metadata:
+  resourceVersion: ""

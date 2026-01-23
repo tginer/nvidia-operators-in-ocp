@@ -1,0 +1,124 @@
+apiVersion: nvidia.com/v1
+kind: ClusterPolicy
+metadata:
+  creationTimestamp: "2025-11-20T12:09:44Z"
+  generation: 1
+  name: gpu-cluster-policy
+  resourceVersion: "450476"
+  uid: 31ff37ae-5d30-433e-af73-ae6d1e5a5daf
+spec:
+  cdi:
+    default: false
+    enabled: false
+  daemonsets:
+    rollingUpdate:
+      maxUnavailable: "1"
+    updateStrategy: RollingUpdate
+  dcgm:
+    enabled: true
+  dcgmExporter:
+    config:
+      name: ""
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  devicePlugin:
+    config:
+      default: ""
+      name: ""
+    enabled: true
+    mps:
+      root: /run/nvidia/mps
+  driver:
+    certConfig:
+      name: ""
+    enabled: true
+    kernelModuleConfig:
+      name: ""
+    kernelModuleType: auto
+    licensingConfig:
+      configMapName: ""
+      nlsEnabled: true
+    rdma:
+      enabled: true
+    repoConfig:
+      configMapName: ""
+    upgradePolicy:
+      autoUpgrade: true
+      drain:
+        deleteEmptyDir: false
+        enable: true
+        force: true
+        timeoutSeconds: 300
+      maxParallelUpgrades: 1
+      maxUnavailable: 100%
+      podDeletion:
+        deleteEmptyDir: false
+        force: false
+        timeoutSeconds: 300
+      waitForCompletion:
+        timeoutSeconds: 0
+    useNvidiaDriverCRD: false
+    useOpenKernelModules: true
+    virtualTopology:
+      config: ""
+  gdrcopy:
+    enabled: true
+  gds:
+    enabled: false
+  gfd:
+    enabled: true
+  kataManager:
+    config:
+      artifactsDir: /opt/nvidia-gpu-operator/artifacts/runtimeclasses
+  mig:
+    strategy: single
+  migManager:
+    config:
+      default: all-disabled
+      name: default-mig-parted-config
+    enabled: true
+  nodeStatusExporter:
+    enabled: true
+  operator:
+    defaultRuntime: crio
+    initContainer: {}
+    runtimeClass: nvidia
+    use_ocp_driver_toolkit: true
+  sandboxDevicePlugin:
+    enabled: true
+  sandboxWorkloads:
+    defaultWorkload: container
+    enabled: false
+  toolkit:
+    enabled: true
+    installDir: /usr/local/nvidia
+  validator:
+    plugin:
+      env:
+      - name: WITH_WORKLOAD
+        value: "false"
+  vfioManager:
+    enabled: true
+  vgpuDeviceManager:
+    config:
+      default: default
+    enabled: true
+  vgpuManager:
+    enabled: false
+status:
+  conditions:
+  - lastTransitionTime: "2025-11-21T11:50:13Z"
+    message: ""
+    reason: Error
+    status: "False"
+    type: Ready
+  - lastTransitionTime: "2025-11-21T11:50:13Z"
+    message: 'ClusterPolicy is not ready, states not ready: [state-driver state-container-toolkit
+      state-operator-validation state-device-plugin state-dcgm state-dcgm-exporter
+      gpu-feature-discovery state-mig-manager]'
+    reason: OperandNotReady
+    status: "True"
+    type: Error
+  namespace: nvidia-gpu-operator
+  state: notReady

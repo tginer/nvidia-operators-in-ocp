@@ -1,0 +1,2 @@
+NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE      NOMINATED NODE   READINESS GATES
+gpu-operator-54d498cdbc-f2lft   1/1     Running   2          6h28m   10.254.0.15   sno-arm   <none>           <none>

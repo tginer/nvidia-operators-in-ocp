@@ -1,0 +1,94 @@
+Name:           nvidia-device-plugin-daemonset
+Selector:       app=nvidia-device-plugin-daemonset
+Node-Selector:  nvidia.com/gpu.deploy.device-plugin=true
+Labels:         app=nvidia-device-plugin-daemonset
+Annotations:    deprecated.daemonset.template.generation: 1
+                nvidia.com/last-applied-hash: 3018785219
+                openshift.io/scc: hostmount-anyuid
+Desired Number of Nodes Scheduled: 1
+Current Number of Nodes Scheduled: 1
+Number of Nodes Scheduled with Up-to-date Pods: 1
+Number of Nodes Scheduled with Available Pods: 0
+Number of Nodes Misscheduled: 0
+Pods Status:  0 Running / 1 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=nvidia-device-plugin-daemonset
+  Service Account:  nvidia-device-plugin
+  Init Containers:
+   toolkit-validation:
+    Image:      nvcr.io/nvidia/gpu-operator@sha256:d4841412c9b8d27c53b1588dcebffc5451e9ab0fd36b2c656c33a65356507cfd
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+    Args:
+      until [ -f /run/nvidia/validations/toolkit-ready ]; do echo waiting for nvidia container stack to be setup; sleep 5; done
+    Environment:  <none>
+    Mounts:
+      /run/nvidia/validations from run-nvidia-validations (rw)
+  Containers:
+   nvidia-device-plugin:
+    Image:      nvcr.io/nvidia/k8s-device-plugin@sha256:2d16df5f3f12081b4bd6b317cf697e5c7a195c53cec7e0bab756db02a06b985c
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/sh
+      -c
+    Args:
+      /bin/entrypoint.sh
+    Environment:
+      PASS_DEVICE_SPECS:           true
+      FAIL_ON_INIT_ERROR:          true
+      DEVICE_LIST_STRATEGY:        envvar
+      DEVICE_ID_STRATEGY:          uuid
+      NVIDIA_VISIBLE_DEVICES:      all
+      NVIDIA_DRIVER_CAPABILITIES:  all
+      MPS_ROOT:                    /run/nvidia/mps
+      GDRCOPY_ENABLED:             true
+      MIG_STRATEGY:                single
+      NVIDIA_MIG_MONITOR_DEVICES:  all
+    Mounts:
+      /bin/entrypoint.sh from nvidia-device-plugin-entrypoint (ro,path="entrypoint.sh")
+      /dev/shm from mps-shm (rw)
+      /driver-root from driver-install-dir (rw)
+      /host from host-root (ro)
+      /mps from mps-root (rw)
+      /run/nvidia/validations from run-nvidia-validations (rw)
+      /var/lib/kubelet/device-plugins from device-plugin (rw)
+      /var/run/cdi from cdi-root (rw)
+  Volumes:
+   nvidia-device-plugin-entrypoint:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      nvidia-device-plugin-entrypoint
+    Optional:  false
+   device-plugin:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/lib/kubelet/device-plugins
+    HostPathType:  
+   run-nvidia-validations:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/validations
+    HostPathType:  DirectoryOrCreate
+   driver-install-dir:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/driver
+    HostPathType:  DirectoryOrCreate
+   host-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+   cdi-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/run/cdi
+    HostPathType:  DirectoryOrCreate
+   mps-root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/nvidia/mps
+    HostPathType:  DirectoryOrCreate
+   mps-shm:
+    Type:               HostPath (bare host directory volume)
+    Path:               /run/nvidia/mps/shm
+    HostPathType:       
+  Priority Class Name:  system-node-critical
+Events:                 <none>

@@ -1,0 +1,59 @@
+Running in OpenShift.
+Get the cluster version
+Get the operator namespaces
+Using 'nvidia-gpu-operator' as operator namespace
+
+#
+# ClusterPolicy
+#
+
+Get clusterpolicy.nvidia.com/gpu-cluster-policy
+
+#
+# Nodes and machines
+#
+
+Get all the machines
+Get the labels of the nodes with NVIDIA PCI cards
+Get the GPU nodes (status)
+Get the GPU nodes (description)
+
+#
+# Operator Pod
+#
+
+Get the GPU Operator Pod (status)
+Get the GPU Operator Pod (yaml)
+Get the GPU Operator Pod logs
+
+#
+# Operand Pods
+#
+
+Get the Pods in nvidia-gpu-operator (status)
+Get the Pods in nvidia-gpu-operator (yaml)
+Get the GPU Operator Pods Images
+Get the description and logs of the GPU Operator Pods
+Skipping operator pod gpu-operator-54d498cdbc-f2lft ...
+
+#
+# Operand DaemonSets
+#
+
+Get the DaemonSets in nvidia-gpu-operator (status)
+Get the DaemonSets in nvidia-gpu-operator (yaml)
+Get the description of the GPU Operator DaemonSets
+Skipping daemonset.apps/gpu-clock-config, not a NVIDA/GPU DaemonSet ...
+
+#
+# nvidia-bug-report.sh
+#
+
+Saving nvidia-bug-report from sno-arm ...
+Failed to collect nvidia-bug-report from sno-arm
+Failed to save nvidia-bug-report from sno-arm
+
+#
+# All done!
+# Logs saved into /tmp/nvidia-gpu-operator_20251121_1019.
+#

@@ -1,0 +1,325 @@
++ [[ ./gpu-operator-mustgather.sh == \/\u\s\r\/\b\i\n\/\g\a\t\h\e\r ]]
+++ kubectl get clusterversion/version --ignore-not-found -oname
++ ocp_cluster=clusterversion.config.openshift.io/version
++ [[ -n clusterversion.config.openshift.io/version ]]
++ echo 'Running in OpenShift.'
++ echo 'Get the cluster version'
++ kubectl get clusterversion/version -oyaml
++ echo 'Get the operator namespaces'
+++ kubectl get pods -lapp=gpu-operator -oname -A
++ OPERATOR_POD_NAME=pod/gpu-operator-54d498cdbc-f2lft
++ '[' -z pod/gpu-operator-54d498cdbc-f2lft ']'
+++ kubectl get pods -lapp=gpu-operator -A '-ojsonpath={.items[].metadata.namespace}' --ignore-not-found
++ OPERATOR_NAMESPACE=nvidia-gpu-operator
++ echo 'Using '\''nvidia-gpu-operator'\'' as operator namespace'
++ echo ''
++ echo '#'
++ echo '# ClusterPolicy'
++ echo '#'
++ echo
+++ kubectl get clusterpolicy -oname
++ CLUSTER_POLICY_NAME=clusterpolicy.nvidia.com/gpu-cluster-policy
++ [[ -n clusterpolicy.nvidia.com/gpu-cluster-policy ]]
++ echo 'Get clusterpolicy.nvidia.com/gpu-cluster-policy'
++ kubectl get -oyaml clusterpolicy.nvidia.com/gpu-cluster-policy
++ echo
++ echo '#'
++ echo '# Nodes and machines'
++ echo '#'
++ echo
++ '[' clusterversion.config.openshift.io/version ']'
++ echo 'Get all the machines'
++ kubectl get machines -A
+error: the server doesn't have a resource type "machines"
++ echo 'Get the labels of the nodes with NVIDIA PCI cards'
++ GPU_PCI_LABELS=(feature.node.kubernetes.io/pci-10de.present feature.node.kubernetes.io/pci-0302_10de.present feature.node.kubernetes.io/pci-0300_10de.present)
++ gpu_pci_nodes=
++ for label in ${GPU_PCI_LABELS[@]}
+++ kubectl get nodes -lfeature.node.kubernetes.io/pci-10de.present -oname
++ gpu_pci_nodes=' node/sno-arm'
++ for label in ${GPU_PCI_LABELS[@]}
+++ kubectl get nodes -lfeature.node.kubernetes.io/pci-0302_10de.present -oname
++ gpu_pci_nodes=' node/sno-arm '
++ for label in ${GPU_PCI_LABELS[@]}
+++ kubectl get nodes -lfeature.node.kubernetes.io/pci-0300_10de.present -oname
++ gpu_pci_nodes=' node/sno-arm  '
++ '[' -z ' node/sno-arm  ' ']'
+++ echo ' node/sno-arm  '
++ for node in $(echo "$gpu_pci_nodes")
++ echo node/sno-arm
++ cut -d/ -f2
++ kubectl get node/sno-arm '-ojsonpath={.metadata.labels}'
++ sed 's|,|,- |g'
++ tr , '\n'
++ sed 's/{"/- /'
++ tr : =
++ sed 's/"//g'
++ sed 's/}/\n/'
++ echo ''
++ echo 'Get the GPU nodes (status)'
++ kubectl get nodes -l nvidia.com/gpu.present=true -o wide
++ echo 'Get the GPU nodes (description)'
++ kubectl describe nodes -l nvidia.com/gpu.present=true
++ echo ''
++ echo '#'
++ echo '# Operator Pod'
++ echo '#'
++ echo
++ echo 'Get the GPU Operator Pod (status)'
++ kubectl get pod/gpu-operator-54d498cdbc-f2lft -owide -n nvidia-gpu-operator
++ echo 'Get the GPU Operator Pod (yaml)'
++ kubectl get pod/gpu-operator-54d498cdbc-f2lft -oyaml -n nvidia-gpu-operator
++ echo 'Get the GPU Operator Pod logs'
++ kubectl logs pod/gpu-operator-54d498cdbc-f2lft -n nvidia-gpu-operator
++ kubectl logs pod/gpu-operator-54d498cdbc-f2lft -n nvidia-gpu-operator --previous
+Error from server (BadRequest): previous terminated container "gpu-operator" in pod "gpu-operator-54d498cdbc-f2lft" not found
++ echo ''
++ echo '#'
++ echo '# Operand Pods'
++ echo '#'
++ echo ''
++ echo 'Get the Pods in nvidia-gpu-operator (status)'
++ kubectl get pods -owide -n nvidia-gpu-operator
++ echo 'Get the Pods in nvidia-gpu-operator (yaml)'
++ kubectl get pods -oyaml -n nvidia-gpu-operator
++ echo 'Get the GPU Operator Pods Images'
++ kubectl get pods -n nvidia-gpu-operator '-o=jsonpath={range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{" "}{end}{end}'
++ echo 'Get the description and logs of the GPU Operator Pods'
+++ kubectl get pods -n nvidia-gpu-operator -oname
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/gpu-feature-discovery-hnr8w -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/gpu-feature-discovery-hnr8w
+++ cut -d/ -f2
++ pod_name=gpu-feature-discovery-hnr8w
++ '[' pod/gpu-feature-discovery-hnr8w == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/gpu-feature-discovery-hnr8w -n nvidia-gpu-operator --all-containers --prefix
+Error from server (BadRequest): container "gpu-feature-discovery" in pod "gpu-feature-discovery-hnr8w" is waiting to start: PodInitializing
++ kubectl logs pod/gpu-feature-discovery-hnr8w -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "toolkit-validation" in pod "gpu-feature-discovery-hnr8w" not found
++ kubectl describe pod/gpu-feature-discovery-hnr8w -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/gpu-operator-54d498cdbc-f2lft -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/gpu-operator-54d498cdbc-f2lft
+++ cut -d/ -f2
++ pod_name=gpu-operator-54d498cdbc-f2lft
++ '[' pod/gpu-operator-54d498cdbc-f2lft == pod/gpu-operator-54d498cdbc-f2lft ']'
++ echo 'Skipping operator pod gpu-operator-54d498cdbc-f2lft ...'
++ continue
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-container-toolkit-daemonset-sxfkr -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-container-toolkit-daemonset-sxfkr
+++ cut -d/ -f2
++ pod_name=nvidia-container-toolkit-daemonset-sxfkr
++ '[' pod/nvidia-container-toolkit-daemonset-sxfkr == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-container-toolkit-daemonset-sxfkr -n nvidia-gpu-operator --all-containers --prefix
+Error from server (BadRequest): container "nvidia-container-toolkit-ctr" in pod "nvidia-container-toolkit-daemonset-sxfkr" is waiting to start: PodInitializing
++ kubectl logs pod/nvidia-container-toolkit-daemonset-sxfkr -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "nvidia-container-toolkit-ctr" in pod "nvidia-container-toolkit-daemonset-sxfkr" not found
++ kubectl describe pod/nvidia-container-toolkit-daemonset-sxfkr -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-cuda-validator-8b5vw -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-cuda-validator-8b5vw
+++ cut -d/ -f2
++ pod_name=nvidia-cuda-validator-8b5vw
++ '[' pod/nvidia-cuda-validator-8b5vw == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-cuda-validator-8b5vw -n nvidia-gpu-operator --all-containers --prefix
++ kubectl logs pod/nvidia-cuda-validator-8b5vw -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "nvidia-cuda-validator" in pod "nvidia-cuda-validator-8b5vw" not found
++ kubectl describe pod/nvidia-cuda-validator-8b5vw -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-dcgm-exporter-n6jqs -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-dcgm-exporter-n6jqs
+++ cut -d/ -f2
++ pod_name=nvidia-dcgm-exporter-n6jqs
++ '[' pod/nvidia-dcgm-exporter-n6jqs == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-dcgm-exporter-n6jqs -n nvidia-gpu-operator --all-containers --prefix
+Error from server (BadRequest): container "init-pod-nvidia-node-status-exporter" in pod "nvidia-dcgm-exporter-n6jqs" is waiting to start: PodInitializing
++ kubectl logs pod/nvidia-dcgm-exporter-n6jqs -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "toolkit-validation" in pod "nvidia-dcgm-exporter-n6jqs" not found
++ kubectl describe pod/nvidia-dcgm-exporter-n6jqs -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-dcgm-m25d9 -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-dcgm-m25d9
+++ cut -d/ -f2
++ pod_name=nvidia-dcgm-m25d9
++ '[' pod/nvidia-dcgm-m25d9 == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-dcgm-m25d9 -n nvidia-gpu-operator --all-containers --prefix
+Error from server (BadRequest): container "nvidia-dcgm-ctr" in pod "nvidia-dcgm-m25d9" is waiting to start: PodInitializing
++ kubectl logs pod/nvidia-dcgm-m25d9 -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "toolkit-validation" in pod "nvidia-dcgm-m25d9" not found
++ kubectl describe pod/nvidia-dcgm-m25d9 -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-device-plugin-daemonset-v46gq -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-device-plugin-daemonset-v46gq
+++ cut -d/ -f2
++ pod_name=nvidia-device-plugin-daemonset-v46gq
++ '[' pod/nvidia-device-plugin-daemonset-v46gq == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-device-plugin-daemonset-v46gq -n nvidia-gpu-operator --all-containers --prefix
+Error from server (BadRequest): container "nvidia-device-plugin" in pod "nvidia-device-plugin-daemonset-v46gq" is waiting to start: PodInitializing
++ kubectl logs pod/nvidia-device-plugin-daemonset-v46gq -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "toolkit-validation" in pod "nvidia-device-plugin-daemonset-v46gq" not found
++ kubectl describe pod/nvidia-device-plugin-daemonset-v46gq -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm
+++ cut -d/ -f2
++ pod_name=nvidia-driver-daemonset-418.94.202510230424-0-564xm
++ '[' pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm -n nvidia-gpu-operator --all-containers --prefix
++ kubectl logs pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "openshift-driver-toolkit-ctr" in pod "nvidia-driver-daemonset-418.94.202510230424-0-564xm" not found
++ kubectl describe pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-mig-manager-w5799 -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-mig-manager-w5799
+++ cut -d/ -f2
++ pod_name=nvidia-mig-manager-w5799
++ '[' pod/nvidia-mig-manager-w5799 == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-mig-manager-w5799 -n nvidia-gpu-operator --all-containers --prefix
+Error from server (BadRequest): container "nvidia-mig-manager" in pod "nvidia-mig-manager-w5799" is waiting to start: PodInitializing
++ kubectl logs pod/nvidia-mig-manager-w5799 -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "toolkit-validation" in pod "nvidia-mig-manager-w5799" not found
++ kubectl describe pod/nvidia-mig-manager-w5799 -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-node-status-exporter-cd78t -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-node-status-exporter-cd78t
+++ cut -d/ -f2
++ pod_name=nvidia-node-status-exporter-cd78t
++ '[' pod/nvidia-node-status-exporter-cd78t == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-node-status-exporter-cd78t -n nvidia-gpu-operator --all-containers --prefix
++ kubectl logs pod/nvidia-node-status-exporter-cd78t -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "nvidia-node-status-exporter" in pod "nvidia-node-status-exporter-cd78t" not found
++ kubectl describe pod/nvidia-node-status-exporter-cd78t -n nvidia-gpu-operator
++ for pod in $($K get pods -n $OPERATOR_NAMESPACE -oname)
++ kubectl get pod/nvidia-operator-validator-6fhjb -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
+++ echo pod/nvidia-operator-validator-6fhjb
+++ cut -d/ -f2
++ pod_name=nvidia-operator-validator-6fhjb
++ '[' pod/nvidia-operator-validator-6fhjb == pod/gpu-operator-54d498cdbc-f2lft ']'
++ kubectl logs pod/nvidia-operator-validator-6fhjb -n nvidia-gpu-operator --all-containers --prefix
+Error from server (BadRequest): container "cuda-validation" in pod "nvidia-operator-validator-6fhjb" is waiting to start: PodInitializing
++ kubectl logs pod/nvidia-operator-validator-6fhjb -n nvidia-gpu-operator --all-containers --prefix --previous
+Error from server (BadRequest): previous terminated container "nvidia-operator-validator" in pod "nvidia-operator-validator-6fhjb" not found
++ kubectl describe pod/nvidia-operator-validator-6fhjb -n nvidia-gpu-operator
++ echo ''
++ echo '#'
++ echo '# Operand DaemonSets'
++ echo '#'
++ echo ''
++ echo 'Get the DaemonSets in nvidia-gpu-operator (status)'
++ kubectl get ds -n nvidia-gpu-operator
++ echo 'Get the DaemonSets in nvidia-gpu-operator (yaml)'
++ kubectl get ds -oyaml -n nvidia-gpu-operator
++ echo 'Get the description of the GPU Operator DaemonSets'
+++ kubectl get ds -n nvidia-gpu-operator -oname
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/gpu-clock-config -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ echo 'Skipping daemonset.apps/gpu-clock-config, not a NVIDA/GPU DaemonSet ...'
++ continue
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/gpu-feature-discovery -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/gpu-feature-discovery -n nvidia-gpu-operator
+++ echo daemonset.apps/gpu-feature-discovery
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-container-toolkit-daemonset -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-container-toolkit-daemonset -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-container-toolkit-daemonset
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-dcgm -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-dcgm -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-dcgm
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-dcgm-exporter -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-dcgm-exporter -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-dcgm-exporter
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-device-plugin-daemonset -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-device-plugin-daemonset -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-device-plugin-daemonset
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-device-plugin-mps-control-daemon -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-device-plugin-mps-control-daemon -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-device-plugin-mps-control-daemon
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-driver-daemonset-418.94.202510230424-0 -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-driver-daemonset-418.94.202510230424-0 -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-driver-daemonset-418.94.202510230424-0
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-gpu-clock-setter -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-gpu-clock-setter -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-gpu-clock-setter
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-mig-manager -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-mig-manager -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-mig-manager
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-node-status-exporter -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-node-status-exporter -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-node-status-exporter
+++ cut -d/ -f2
++ for ds in $($K get ds -n $OPERATOR_NAMESPACE -oname)
++ kubectl get daemonset.apps/nvidia-operator-validator -n nvidia-gpu-operator '-ojsonpath={.metadata.labels}'
++ egrep --quiet '(nvidia|gpu)'
++ kubectl describe daemonset.apps/nvidia-operator-validator -n nvidia-gpu-operator
+++ echo daemonset.apps/nvidia-operator-validator
+++ cut -d/ -f2
++ echo ''
++ echo '#'
++ echo '# nvidia-bug-report.sh'
++ echo '#'
++ echo ''
+++ kubectl get pods -lopenshift.driver-toolkit -oname -n nvidia-gpu-operator
+++ kubectl get pods -lapp=nvidia-driver-daemonset -oname -n nvidia-gpu-operator
+++ kubectl get pods -lapp=nvidia-vgpu-manager-daemonset -oname -n nvidia-gpu-operator
++ for pod in $($K get pods -lopenshift.driver-toolkit -oname -n $OPERATOR_NAMESPACE; $K get pods -lapp=nvidia-driver-daemonset -oname -n $OPERATOR_NAMESPACE; $K get pods -lapp=nvidia-vgpu-manager-daemonset -oname -n $OPERATOR_NAMESPACE)
+++ kubectl get pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm '-ojsonpath={.spec.nodeName}' -n nvidia-gpu-operator
++ pod_nodename=sno-arm
++ echo 'Saving nvidia-bug-report from sno-arm ...'
++ kubectl exec -n nvidia-gpu-operator pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm -- bash -c 'cd /tmp && nvidia-bug-report.sh'
+error: unable to upgrade connection: container not found ("nvidia-driver-ctr")
++ echo 'Failed to collect nvidia-bug-report from sno-arm'
++ continue
+++ basename pod/nvidia-driver-daemonset-418.94.202510230424-0-564xm
++ kubectl cp nvidia-gpu-operator/nvidia-driver-daemonset-418.94.202510230424-0-564xm:/tmp/nvidia-bug-report.log.gz /tmp/nvidia-bug-report.log.gz
+error: unable to upgrade connection: container not found ("nvidia-driver-ctr")
++ echo 'Failed to save nvidia-bug-report from sno-arm'
++ continue
++ mv /tmp/nvidia-bug-report.log.gz /tmp/nvidia-gpu-operator_20251121_1019/nvidia-bug-report_sno-arm.log.gz
+mv: cannot stat '/tmp/nvidia-bug-report.log.gz': No such file or directory
++ echo ''
++ echo '#'
++ echo '# All done!'
++ [[ ./gpu-operator-mustgather.sh != \/\u\s\r\/\b\i\n\/\g\a\t\h\e\r ]]
++ echo '# Logs saved into /tmp/nvidia-gpu-operator_20251121_1019.'
++ echo '#'
