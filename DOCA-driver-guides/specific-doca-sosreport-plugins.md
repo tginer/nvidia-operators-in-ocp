@@ -1,6 +1,6 @@
 # Additional Logs Collected by doca-sosreport
 
-This document details the additional plugins and modifications in `doca-sosreport` compared to the upstream `sos` project.
+This document details the additional plugins and modifications in `doca-sosreport` compared to the upstream `sos` project. Document generated with help of Claude-4.5-Opus-High.
 
 ---
 
